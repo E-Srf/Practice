@@ -1,5 +1,32 @@
 // layout.js — shared sidebar + topbar for all dashboard pages
 
+// ── Theme ──────────────────────────────────────────────────
+
+function getTheme() {
+  return localStorage.getItem('forexrm-theme') || 'dark';
+}
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  const icon = document.getElementById('themeIcon');
+  if (icon) icon.textContent = theme === 'light' ? 'dark_mode' : 'light_mode';
+}
+
+function toggleTheme() {
+  const current  = getTheme();
+  const next     = current === 'dark' ? 'light' : 'dark';
+  const html     = document.documentElement;
+
+  // Briefly enable cross-property transitions for a smooth swap
+  html.classList.add('theme-switching');
+  applyTheme(next);
+  localStorage.setItem('forexrm-theme', next);
+  setTimeout(() => html.classList.remove('theme-switching'), 300);
+}
+
+// Apply before first paint to avoid flash
+applyTheme(getTheme());
+
 const NAV_ITEMS = [
   { href: 'dashboard.html',     icon: 'dashboard',              label: 'Dashboard',        badge: null },
   { href: 'phase1.html',        icon: 'assignment',             label: 'Phase 1 Accounts', badge: '47' },
@@ -75,6 +102,10 @@ function initLayout(config = {}) {
       </div>
 
       <div class="topbar-actions">
+        <button class="btn btn-icon" id="themeToggle" aria-label="Toggle theme">
+          <span class="material-icons-round" id="themeIcon">light_mode</span>
+        </button>
+
         <button class="btn btn-icon notif-btn" onclick="window.location='notifications.html'" aria-label="Notifications">
           <span class="material-icons-round">notifications_none</span>
           <span class="notif-dot"></span>
@@ -101,6 +132,11 @@ function initLayout(config = {}) {
         overlay.classList.remove('open');
       });
     }
+
+    // Theme toggle — icon must be set after topbar HTML is injected
+    applyTheme(getTheme());
+    const themeBtn = document.getElementById('themeToggle');
+    if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
   }
 
   // ── Auth guard ─────────────────────────────────────────────
