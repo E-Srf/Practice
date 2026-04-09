@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ForexRM — Settings</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <div class="main-content">
+    <header class="topbar" id="topbar"></header>
+
+    <main class="page-content">
+      <div class="page-header">
+        <h1>Settings</h1>
+        <p>Manage your profile, notification preferences, and risk parameters</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:240px 1fr;gap:24px;align-items:start">
+
+        <!-- Settings sidebar nav -->
+        <div class="card" style="padding:12px">
+          <nav style="display:flex;flex-direction:column;gap:2px">
+            <button class="nav-item active" onclick="showSection('profile')" id="nav-profile">
+              <span class="material-icons-round">person</span> Profile
+            </button>
+            <button class="nav-item" onclick="showSection('notifications')" id="nav-notifications">
+              <span class="material-icons-round">notifications</span> Notifications
+            </button>
+            <button class="nav-item" onclick="showSection('risk')" id="nav-risk">
+              <span class="material-icons-round">security</span> Risk Parameters
+            </button>
+            <button class="nav-item" onclick="showSection('appearance')" id="nav-appearance">
+              <span class="material-icons-round">palette</span> Appearance
+            </button>
+            <button class="nav-item" onclick="showSection('security')" id="nav-security">
+              <span class="material-icons-round">lock</span> Security
+            </button>
+          </nav>
+        </div>
+
+        <!-- Settings content -->
+        <div>
+
+          <!-- Profile Section -->
+          <div id="section-profile">
+            <div class="card">
+              <div class="settings-section">
+                <div class="settings-section-title">Profile Information</div>
+
+                <!-- Avatar -->
+                <div style="display:flex;align-items:center;gap:20px;padding:16px 0;border-bottom:1px solid rgba(73,69,79,.2)">
+                  <div class="avatar" style="width:72px;height:72px;font-size:24px;font-weight:700">EL</div>
+                  <div>
+                    <div class="font-semibold" style="margin-bottom:4px">Profile Photo</div>
+                    <div class="text-sm text-muted" style="margin-bottom:12px">Avatar is generated from your initials</div>
+                    <button class="btn btn-outlined btn-sm">Change Photo</button>
+                  </div>
+                </div>
+
+                <div class="settings-row">
+                  <div>
+                    <div class="settings-row-label">Full Name</div>
+                    <div class="settings-row-desc">Your display name across the platform</div>
+                  </div>
+                  <input class="settings-input" type="text" value="Elahe Ahmadi">
+                </div>
+
+                <div class="settings-row">
+                  <div>
+                    <div class="settings-row-label">Email Address</div>
+                    <div class="settings-row-desc">Used for login and system alerts</div>
+                  </div>
+                  <input class="settings-input" type="email" value="elahe@forexrm.io">
+                </div>
+
+                <div class="settings-row">
+                  <div>
+                    <div class="settings-row-label">Job Title</div>
+                    <div class="settings-row-desc">Shown on your profile and reports</div>
+                  </div>
+                  <input class="settings-input" type="text" value="Risk Management Analyst">
+                </div>
+
+                <div class="settings-row">
+                  <div>
+                    <div class="settings-row-label">Timezone</div>
+                    <div class="settings-row-desc">Used for scheduling and timestamps</div>
+                  </div>
+                  <select class="select-field">
+                    <option>UTC+3:30 — Tehran</option>
+                    <option>UTC+0 — London</option>
+                    <option>UTC-5 — New York</option>
+                    <option>UTC+8 — Singapore</option>
+                  </select>
+                </div>
+              </div>
+
+              <div style="display:flex;justify-content:flex-end;gap:12px;padding-top:8px">
+                <button class="btn btn-outlined">Cancel</button>
+                <button class="btn btn-primary" style="width:auto;padding:12px 28px" onclick="showToast('Profile saved successfully')">Save Changes</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notifications Section -->
+          <div id="section-notifications" style="display:none">
+            <div class="card">
+              <div class="settings-section">
+                <div class="settings-section-title">Email Notification Preferences</div>
+
+                <div class="settings-row">
+                  <div>
+                    <div class="settings-row-label">Phase 1 Results</div>
+                    <div class="settings-row-desc">Notify me when Phase 1 reviews are completed</div>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" checked>
+                    <span class="toggle-track"></span>
+                  </label>
+                </div>
+
+                <div class="settings-row">
+                  <div>
+                    <div class="settings-row-label">Phase 2 Results</div>
+                    <div class="settings-row-desc">Notify me when Phase 2 evaluations are done</div>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" checked>
+                    <span class="toggle-track"></span>
+                  </label>
+                </div>
+
+                <div class="settings-row">
+                  <div>
+                    <div class="settings-row-label">Risk Alerts</div>
+                    <div class="settings-row-desc">Receive alerts for drawdown warnings and breaches</div>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" checked>
+                    <span class="toggle-track"></span>
+                  </label>
+                </div>
+
+                <div class="settings-row">
+                  <div>
+                    <div class="settings-row-label">Payout Requests</div>
+                    <div class="settings-row-desc">Notify me when traders submit payout requests</div>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" checked>
+                    <span class="toggle-track"></span>
+                  </label>
+                </div>
+
+                <div class="settings-row">
+                  <div>
+                    <div class="settings-row-label">Daily Summary Report</div>
+                    <div class="settings-row-desc">Receive a daily digest at 08:00 each morning</div>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" checked>
+                    <span class="toggle-track"></span>
+                  </label>
+                </div>
+
+                <div class="settings-row">
+                  <div>
+                    <div class="settings-row-label">Delivery Time</div>
+                    <div class="settings-row-desc">Default time for batch email dispatch</div>
+                  </div>
+                  <select class="select-field">
+                    <option>08:00 AM</option>
+                    <option>09:00 AM</option>
+                    <option>10:00 AM</option>
+                    <option>12:00 PM</option>
+                  </select>
+                </div>
+              </div>
+
+              <div style="display:flex;justify-content:flex-end;gap:12px;padding-top:8px">
+                <button class="btn btn-primary" style="width:auto;padding:12px 28px" onclick="showToast('Notification settings saved')">Save Preferences</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Risk Parameters -->
+          <div id="section-risk" style="display:none">
+            <div class="card">
+              <div class="settings-section">
+                <div class="settings-section-title">Phase 1 Challenge Rules</div>
+
+                <div class="settings-row">
+                  <div>
+                    <div class="settings-row-label">Profit Target</div>
+                    <div class="settings-row-desc">Required profit to pass Phase 1</div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:8px">
+                    <input class="settings-input" type="number" value="8" style="min-width:80px;width:80px">
+                    <span class="text-muted">%</span>
+                  </div>
+                </div>
+
+                <div class="settings-row">
+                  <div>
+                    <div class="settings-row-label">Max Drawdown</div>
+                    <div class="settings-row-desc">Maximum overall account drawdown allowed</div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:8px">
+                    <input class="settings-input" type="number" value="10" style="min-width:80px;width:80px">
+                    <span class="text-muted">%</span>
+                  </div>
+                </div>
+
+                <div class="settings-row">
+                  <div>
+                    <div class="settings-row-label">Daily Loss Limit</div>
+                    <div class="settings-row-desc">Maximum loss allowed in a single trading day</div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:8px">
+                    <input class="settings-input" type="number" value="5" style="min-width:80px;width:80px">
+                    <span class="text-muted">%</span>
+                  </div>
+                </div>
+
+                <div class="settings-row">
+                  <div>
+                    <div class="settings-row-label">Trading Days (min)</div>
+                    <div class="settings-row-desc">Minimum trading days required before evaluation</div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:8px">
+                    <input class="settings-input" type="number" value="5" style="min-width:80px;width:80px">
+                    <span class="text-muted">days</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="settings-section">
+                <div class="settings-section-title">Phase 2 Verification Rules</div>
+
+                <div class="settings-row">
+                  <div>
+                    <div class="settings-row-label">Profit Target</div>
+                    <div class="settings-row-desc">Required profit to pass Phase 2</div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:8px">
+                    <input class="settings-input" type="number" value="5" style="min-width:80px;width:80px">
+                    <span class="text-muted">%</span>
+                  </div>
+                </div>
+
+                <div class="settings-row">
+                  <div>
+                    <div class="settings-row-label">Max Drawdown</div>
+                    <div class="settings-row-desc">Stricter drawdown rule for Phase 2</div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:8px">
+                    <input class="settings-input" type="number" value="5" style="min-width:80px;width:80px">
+                    <span class="text-muted">%</span>
+                  </div>
+                </div>
+
+                <div class="settings-row">
+                  <div>
+                    <div class="settings-row-label">Daily Loss Limit</div>
+                    <div class="settings-row-desc">Daily drawdown cap for Phase 2</div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:8px">
+                    <input class="settings-input" type="number" value="2" style="min-width:80px;width:80px">
+                    <span class="text-muted">%</span>
+                  </div>
+                </div>
+              </div>
+
+              <div style="display:flex;justify-content:flex-end;gap:12px;padding-top:8px">
+                <button class="btn btn-outlined">Reset to Defaults</button>
+                <button class="btn btn-primary" style="width:auto;padding:12px 28px" onclick="showToast('Risk parameters updated')">Save Parameters</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Appearance Section -->
+          <div id="section-appearance" style="display:none">
+            <div class="card">
+              <div class="settings-section">
+                <div class="settings-section-title">Appearance</div>
+
+                <div class="settings-row">
+                  <div>
+                    <div class="settings-row-label">Color Mode</div>
+                    <div class="settings-row-desc">Choose your preferred interface theme</div>
+                  </div>
+                  <select class="select-field" id="themeSelect">
+                    <option value="dark" selected>Dark Mode</option>
+                    <option value="light">Light Mode</option>
+                  </select>
+                </div>
+
+                <div class="settings-row">
+                  <div>
+                    <div class="settings-row-label">Compact Tables</div>
+                    <div class="settings-row-desc">Reduce row height in data tables for more density</div>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox">
+                    <span class="toggle-track"></span>
+                  </label>
+                </div>
+
+                <div class="settings-row">
+                  <div>
+                    <div class="settings-row-label">Sidebar Collapsed by Default</div>
+                    <div class="settings-row-desc">Start with the sidebar minimized on load</div>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox">
+                    <span class="toggle-track"></span>
+                  </label>
+                </div>
+
+                <div class="settings-row">
+                  <div>
+                    <div class="settings-row-label">Animations</div>
+                    <div class="settings-row-desc">Enable UI transition animations</div>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" checked>
+                    <span class="toggle-track"></span>
+                  </label>
+                </div>
+
+                <div class="settings-row">
+                  <div>
+                    <div class="settings-row-label">Default Dashboard View</div>
+                    <div class="settings-row-desc">Page shown after login</div>
+                  </div>
+                  <select class="select-field">
+                    <option>Dashboard Overview</option>
+                    <option>Phase 1 Accounts</option>
+                    <option>Phase 2 Accounts</option>
+                    <option>Funded Accounts</option>
+                  </select>
+                </div>
+              </div>
+
+              <div style="display:flex;justify-content:flex-end;gap:12px;padding-top:8px">
+                <button class="btn btn-primary" style="width:auto;padding:12px 28px" onclick="showToast('Appearance settings saved')">Save</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Security Section -->
+          <div id="section-security" style="display:none">
+            <div class="card">
+              <div class="settings-section">
+                <div class="settings-section-title">Password</div>
+
+                <div class="settings-row">
+                  <div>
+                    <div class="settings-row-label">Current Password</div>
+                  </div>
+                  <input class="settings-input" type="password" placeholder="••••••••••">
+                </div>
+                <div class="settings-row">
+                  <div>
+                    <div class="settings-row-label">New Password</div>
+                  </div>
+                  <input class="settings-input" type="password" placeholder="At least 12 characters">
+                </div>
+                <div class="settings-row">
+                  <div>
+                    <div class="settings-row-label">Confirm New Password</div>
+                  </div>
+                  <input class="settings-input" type="password" placeholder="Repeat new password">
+                </div>
+              </div>
+
+              <div class="settings-section">
+                <div class="settings-section-title">Two-Factor Authentication</div>
+
+                <div class="settings-row">
+                  <div>
+                    <div class="settings-row-label">Authenticator App (TOTP)</div>
+                    <div class="settings-row-desc">Require a verification code on each login</div>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" checked>
+                    <span class="toggle-track"></span>
+                  </label>
+                </div>
+
+                <div class="settings-row">
+                  <div>
+                    <div class="settings-row-label">Login Notifications</div>
+                    <div class="settings-row-desc">Email me when a new login is detected</div>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" checked>
+                    <span class="toggle-track"></span>
+                  </label>
+                </div>
+              </div>
+
+              <div style="display:flex;justify-content:space-between;align-items:center;padding-top:8px">
+                <button class="btn btn-outlined" style="border-color:var(--error);color:var(--error)" onclick="signOut()">
+                  <span class="material-icons-round" style="font-size:16px">logout</span>
+                  Sign Out
+                </button>
+                <button class="btn btn-primary" style="width:auto;padding:12px 28px" onclick="showToast('Security settings updated')">Update Password</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Toast -->
+      <div id="toast" style="
+        position:fixed;bottom:28px;right:28px;
+        background:var(--surface-container-highest);
+        border:1px solid var(--outline-variant);
+        border-radius:var(--radius-lg);
+        padding:14px 20px;
+        display:flex;align-items:center;gap:12px;
+        font-size:14px;font-weight:500;
+        box-shadow:var(--elevation-3);
+        transform:translateY(80px);opacity:0;
+        transition:all .3s cubic-bezier(.2,0,0,1);
+        z-index:999;pointer-events:none;
+      ">
+        <span class="material-icons-round" style="color:var(--success)">check_circle</span>
+        <span id="toastMsg">Saved</span>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="layout.js"></script>
+<script>
+  initLayout({ title: 'Settings', subtitle: 'Account & preferences' });
+
+  function showSection(id) {
+    ['profile','notifications','risk','appearance','security'].forEach(s => {
+      document.getElementById(`section-${s}`).style.display = s === id ? 'block' : 'none';
+      const nav = document.getElementById(`nav-${s}`);
+      nav.classList.toggle('active', s === id);
+    });
+  }
+
+  function showToast(msg) {
+    const toast = document.getElementById('toast');
+    document.getElementById('toastMsg').textContent = msg;
+    toast.style.transform = 'translateY(0)';
+    toast.style.opacity = '1';
+    setTimeout(() => {
+      toast.style.transform = 'translateY(80px)';
+      toast.style.opacity = '0';
+    }, 3000);
+  }
+
+  function signOut() {
+    sessionStorage.removeItem('forexrm_user');
+    window.location.href = 'index.html';
+  }
+</script>
+</body>
+</html>

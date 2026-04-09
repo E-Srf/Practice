@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ForexRM — Sign Up</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="auth-page">
+
+  <div class="auth-card">
+    <div class="auth-logo">
+      <div class="auth-logo-icon">
+        <span class="material-icons-round">show_chart</span>
+      </div>
+      <div>
+        <div class="auth-logo-text">ForexRM</div>
+        <div class="auth-logo-sub">Risk Management Portal</div>
+      </div>
+    </div>
+
+    <h1 class="auth-title">Create account</h1>
+    <p class="auth-subtitle">Set up your risk management workspace</p>
+
+    <form id="signupForm" novalidate>
+      <div class="form-field">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" placeholder="Elahe Ahmadi" autocomplete="name">
+      </div>
+
+      <div class="form-field">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="elahe@forexrm.io" autocomplete="email">
+      </div>
+
+      <div class="form-field">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Choose a strong password" autocomplete="new-password">
+      </div>
+
+      <div class="form-field">
+        <label for="confirmPass">Confirm Password</label>
+        <input type="password" id="confirmPass" placeholder="Repeat your password" autocomplete="new-password">
+      </div>
+
+      <div class="auth-error" id="signupError">Passwords do not match. Please try again.</div>
+
+      <button type="submit" class="btn btn-primary" style="margin-top:8px">
+        <span class="material-icons-round" style="font-size:18px">person_add</span>
+        Create Account
+      </button>
+    </form>
+
+    <div class="auth-footer">
+      Already have an account? <a href="index.html">Sign in</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('signupForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name      = document.getElementById('fullName').value.trim();
+      const email     = document.getElementById('email').value.trim();
+      const pass      = document.getElementById('password').value;
+      const confirm   = document.getElementById('confirmPass').value;
+      const errorEl   = document.getElementById('signupError');
+
+      if (!name || !email || !pass) {
+        errorEl.textContent = 'Please fill in all fields.';
+        errorEl.style.display = 'block';
+        return;
+      }
+
+      if (pass !== confirm) {
+        errorEl.textContent = 'Passwords do not match.';
+        errorEl.style.display = 'block';
+        return;
+      }
+
+      errorEl.style.display = 'none';
+      // Redirect to login after successful signup
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>

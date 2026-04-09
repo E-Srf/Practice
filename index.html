@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ForexRM — Login</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="auth-page">
+
+  <div class="auth-card">
+    <div class="auth-logo">
+      <div class="auth-logo-icon">
+        <span class="material-icons-round">show_chart</span>
+      </div>
+      <div>
+        <div class="auth-logo-text">ForexRM</div>
+        <div class="auth-logo-sub">Risk Management Portal</div>
+      </div>
+    </div>
+
+    <h1 class="auth-title">Welcome back</h1>
+    <p class="auth-subtitle">Sign in to your risk management dashboard</p>
+
+    <div class="auth-error" id="authError">
+      <span class="material-icons-round" style="font-size:16px;vertical-align:middle;margin-right:6px">error_outline</span>
+      Invalid email or password. Please try again.
+    </div>
+
+    <form id="loginForm" novalidate>
+      <div class="form-field">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="elahe@forexrm.io" autocomplete="email">
+      </div>
+
+      <div class="form-field">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" autocomplete="current-password">
+      </div>
+
+      <div style="display:flex;justify-content:flex-end;margin-bottom:24px">
+        <a href="#" class="btn btn-text" style="padding:4px 0;font-size:13px">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="btn btn-primary">
+        <span class="material-icons-round" style="font-size:18px">login</span>
+        Sign In
+      </button>
+    </form>
+
+    <div class="auth-footer">
+      Don't have an account? <a href="signup.html">Create account</a>
+    </div>
+  </div>
+
+  <script>
+    // Redirect if already logged in
+    if (sessionStorage.getItem('forexrm_user')) {
+      window.location.href = 'dashboard.html';
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const errorEl = document.getElementById('authError');
+
+      // Simulate auth — accept any non-empty creds
+      if (!email || !password) {
+        errorEl.style.display = 'block';
+        return;
+      }
+
+      errorEl.style.display = 'none';
+
+      // Store simulated user session
+      sessionStorage.setItem('forexrm_user', JSON.stringify({
+        name: 'Elahe Ahmadi',
+        email: email,
+        role: 'Risk Analyst',
+      }));
+
+      window.location.href = 'dashboard.html';
+    });
+  </script>
+</body>
+</html>

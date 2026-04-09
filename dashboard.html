@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ForexRM — Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <div class="main-content">
+    <header class="topbar" id="topbar"></header>
+
+    <main class="page-content">
+      <div class="page-header">
+        <h1>Good morning, Elahe 👋</h1>
+        <p>Here's what's happening across your accounts today — Wednesday, 9 April 2026</p>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="stats-grid">
+        <div class="stat-card stat-purple" onclick="window.location='phase1.html'" style="cursor:pointer">
+          <div class="stat-card-accent"></div>
+          <div class="stat-icon"><span class="material-icons-round">assignment</span></div>
+          <div class="stat-label">Pending Phase 1</div>
+          <div class="stat-value">47</div>
+          <div class="stat-note">Results emailed within 24 hrs</div>
+        </div>
+
+        <div class="stat-card stat-blue" onclick="window.location='phase2.html'" style="cursor:pointer">
+          <div class="stat-card-accent"></div>
+          <div class="stat-icon"><span class="material-icons-round">assignment_turned_in</span></div>
+          <div class="stat-label">Pending Phase 2</div>
+          <div class="stat-value">23</div>
+          <div class="stat-note">Results emailed within 48 hrs</div>
+        </div>
+
+        <div class="stat-card stat-green" onclick="window.location='funded.html'" style="cursor:pointer">
+          <div class="stat-card-accent"></div>
+          <div class="stat-icon"><span class="material-icons-round">account_balance_wallet</span></div>
+          <div class="stat-label">Funded Accounts Today</div>
+          <div class="stat-value">8</div>
+          <div class="stat-note">↑ 3 more than yesterday</div>
+        </div>
+
+        <div class="stat-card stat-yellow">
+          <div class="stat-card-accent"></div>
+          <div class="stat-icon"><span class="material-icons-round">people</span></div>
+          <div class="stat-label">Total Active Traders</div>
+          <div class="stat-value">312</div>
+          <div class="stat-note">Across all account stages</div>
+        </div>
+      </div>
+
+      <!-- Main grid -->
+      <div class="grid-2">
+
+        <!-- Activity Feed -->
+        <div class="card">
+          <div class="flex-between mb-16">
+            <div class="card-title" style="margin-bottom:0">Recent Activity</div>
+            <button class="btn btn-text" style="font-size:12px;padding:4px 8px">View all</button>
+          </div>
+
+          <div class="activity-list">
+            <div class="activity-item">
+              <div class="activity-icon" style="background:rgba(134,239,172,.12)">
+                <span class="material-icons-round" style="color:var(--success)">check_circle</span>
+              </div>
+              <div class="activity-body">
+                <div class="activity-text"><strong>Marcus Chen</strong> passed Phase 2 evaluation — promoted to Funded</div>
+                <div class="activity-time">2 minutes ago</div>
+              </div>
+            </div>
+
+            <div class="activity-item">
+              <div class="activity-icon" style="background:rgba(196,170,255,.12)">
+                <span class="material-icons-round" style="color:var(--primary)">add_circle</span>
+              </div>
+              <div class="activity-body">
+                <div class="activity-text"><strong>Sofia Martínez</strong> started Phase 1 — $100K account</div>
+                <div class="activity-time">18 minutes ago</div>
+              </div>
+            </div>
+
+            <div class="activity-item">
+              <div class="activity-icon" style="background:rgba(255,180,171,.12)">
+                <span class="material-icons-round" style="color:var(--error)">cancel</span>
+              </div>
+              <div class="activity-body">
+                <div class="activity-text"><strong>James Okonkwo</strong> breached max drawdown — Phase 1 failed</div>
+                <div class="activity-time">41 minutes ago</div>
+              </div>
+            </div>
+
+            <div class="activity-item">
+              <div class="activity-icon" style="background:rgba(147,197,253,.12)">
+                <span class="material-icons-round" style="color:var(--info)">email</span>
+              </div>
+              <div class="activity-body">
+                <div class="activity-text">Batch notification sent to <strong>12 traders</strong> — Phase 1 results</div>
+                <div class="activity-time">1 hour ago</div>
+              </div>
+            </div>
+
+            <div class="activity-item">
+              <div class="activity-icon" style="background:rgba(252,211,77,.12)">
+                <span class="material-icons-round" style="color:var(--warning)">warning</span>
+              </div>
+              <div class="activity-body">
+                <div class="activity-text"><strong>Aiko Tanaka</strong> approaching daily loss limit — 78% used</div>
+                <div class="activity-time">2 hours ago</div>
+              </div>
+            </div>
+
+            <div class="activity-item">
+              <div class="activity-icon" style="background:rgba(134,239,172,.12)">
+                <span class="material-icons-round" style="color:var(--success)">attach_money</span>
+              </div>
+              <div class="activity-body">
+                <div class="activity-text"><strong>Luca Ferrari</strong> requested $4,200 payout — under review</div>
+                <div class="activity-time">3 hours ago</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right column -->
+        <div style="display:flex;flex-direction:column;gap:20px">
+
+          <!-- Phase Overview -->
+          <div class="card">
+            <div class="card-title">Phase Conversion Rates</div>
+            <div style="display:flex;flex-direction:column;gap:16px">
+              <div>
+                <div class="flex-between mb-4">
+                  <span class="text-sm">Phase 1 → Phase 2</span>
+                  <span class="text-sm font-semibold text-primary">62%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width:62%;background:var(--primary)"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex-between mb-4">
+                  <span class="text-sm">Phase 2 → Funded</span>
+                  <span class="text-sm font-semibold text-success">48%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width:48%;background:var(--success)"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex-between mb-4">
+                  <span class="text-sm">Funded Retention (30d)</span>
+                  <span class="text-sm font-semibold" style="color:var(--info)">81%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width:81%;background:var(--info)"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex-between mb-4">
+                  <span class="text-sm">Overall Drawdown Usage</span>
+                  <span class="text-sm font-semibold text-warning">34%</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width:34%;background:var(--warning)"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Stats -->
+          <div class="card">
+            <div class="card-title">Today at a Glance</div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <div class="flex-between">
+                <span class="text-sm text-muted">New Applications</span>
+                <span class="font-semibold" style="font-size:15px">19</span>
+              </div>
+              <div class="flex-between">
+                <span class="text-sm text-muted">Emails Sent</span>
+                <span class="font-semibold" style="font-size:15px">31</span>
+              </div>
+              <div class="flex-between">
+                <span class="text-sm text-muted">Accounts Reviewed</span>
+                <span class="font-semibold" style="font-size:15px">28</span>
+              </div>
+              <div class="flex-between">
+                <span class="text-sm text-muted">Payouts Processed</span>
+                <span class="font-semibold text-success" style="font-size:15px">$24,800</span>
+              </div>
+              <div class="flex-between">
+                <span class="text-sm text-muted">Risk Alerts</span>
+                <span class="font-semibold text-warning" style="font-size:15px">4</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pending Email Queue -->
+          <div class="card">
+            <div class="card-title">Email Queue</div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <div class="flex-between">
+                <div class="flex-center gap-8">
+                  <span class="badge badge-pending">Queued</span>
+                  <span class="text-sm">Phase 1 Results</span>
+                </div>
+                <span class="text-xs text-muted">5 emails</span>
+              </div>
+              <div class="flex-between">
+                <div class="flex-center gap-8">
+                  <span class="badge badge-pending">Queued</span>
+                  <span class="text-sm">Phase 2 Results</span>
+                </div>
+                <span class="text-xs text-muted">3 emails</span>
+              </div>
+              <div class="flex-between">
+                <div class="flex-center gap-8">
+                  <span class="badge badge-sent">Sent</span>
+                  <span class="text-sm">Funded Welcome</span>
+                </div>
+                <span class="text-xs text-muted">8 emails</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Accounts table snapshot -->
+      <div class="card" style="margin-top:4px">
+        <div class="flex-between mb-16">
+          <div class="card-title" style="margin-bottom:0">Recent Account Reviews</div>
+          <a href="phase1.html" class="btn btn-outlined btn-sm">View All Phase 1</a>
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Account ID</th>
+                <th>Trader</th>
+                <th>Phase</th>
+                <th>Account Size</th>
+                <th>P&L</th>
+                <th>Drawdown</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-xs text-muted">#FX-29041</td>
+                <td><div class="font-semibold">Marcus Chen</div></td>
+                <td><span class="badge badge-active">Phase 2</span></td>
+                <td>$100,000</td>
+                <td class="text-success font-semibold">+8.32%</td>
+                <td>3.1%</td>
+                <td><span class="badge badge-passed">Passed</span></td>
+              </tr>
+              <tr>
+                <td class="text-xs text-muted">#FX-29038</td>
+                <td><div class="font-semibold">Sofia Martínez</div></td>
+                <td><span class="badge badge-review">Phase 1</span></td>
+                <td>$100,000</td>
+                <td class="text-success font-semibold">+1.20%</td>
+                <td>0.8%</td>
+                <td><span class="badge badge-pending">In Progress</span></td>
+              </tr>
+              <tr>
+                <td class="text-xs text-muted">#FX-29035</td>
+                <td><div class="font-semibold">James Okonkwo</div></td>
+                <td><span class="badge badge-review">Phase 1</span></td>
+                <td>$50,000</td>
+                <td class="text-error font-semibold">−6.80%</td>
+                <td>10.0%</td>
+                <td><span class="badge badge-failed">Failed</span></td>
+              </tr>
+              <tr>
+                <td class="text-xs text-muted">#FX-29032</td>
+                <td><div class="font-semibold">Aiko Tanaka</div></td>
+                <td><span class="badge badge-review">Phase 1</span></td>
+                <td>$200,000</td>
+                <td class="text-success font-semibold">+4.75%</td>
+                <td>4.7%</td>
+                <td><span class="badge badge-pending">In Progress</span></td>
+              </tr>
+              <tr>
+                <td class="text-xs text-muted">#FX-29028</td>
+                <td><div class="font-semibold">Luca Ferrari</div></td>
+                <td><span class="badge badge-active">Funded</span></td>
+                <td>$50,000</td>
+                <td class="text-success font-semibold">+11.40%</td>
+                <td>2.4%</td>
+                <td><span class="badge badge-active">Active</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="layout.js"></script>
+<script>
+  initLayout({ title: 'Dashboard', subtitle: 'Overview' });
+</script>
+</body>
+</html>
