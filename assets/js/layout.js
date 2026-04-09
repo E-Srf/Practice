@@ -60,7 +60,7 @@ function initLayout(config = {}) {
           <span class="material-icons-round">show_chart</span>
         </div>
         <div>
-          <div class="brand-name">ForexRM</div>
+          <div class="brand-name">OpoFinance</div>
           <div class="brand-tag">Risk Management</div>
         </div>
       </div>
