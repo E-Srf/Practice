@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ForexRM — Settings</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
 <div class="sidebar-overlay" id="sidebarOverlay"></div>
@@ -441,33 +441,7 @@
   </div>
 </div>
 
-<script src="layout.js"></script>
-<script>
-  initLayout({ title: 'Settings', subtitle: 'Account & preferences' });
-
-  function showSection(id) {
-    ['profile','notifications','risk','appearance','security'].forEach(s => {
-      document.getElementById(`section-${s}`).style.display = s === id ? 'block' : 'none';
-      const nav = document.getElementById(`nav-${s}`);
-      nav.classList.toggle('active', s === id);
-    });
-  }
-
-  function showToast(msg) {
-    const toast = document.getElementById('toast');
-    document.getElementById('toastMsg').textContent = msg;
-    toast.style.transform = 'translateY(0)';
-    toast.style.opacity = '1';
-    setTimeout(() => {
-      toast.style.transform = 'translateY(80px)';
-      toast.style.opacity = '0';
-    }, 3000);
-  }
-
-  function signOut() {
-    sessionStorage.removeItem('forexrm_user');
-    window.location.href = 'index.html';
-  }
-</script>
+<script src="assets/js/layout.js"></script>
+<script src="assets/js/settings.js"></script>
 </body>
 </html>
