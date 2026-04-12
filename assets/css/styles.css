@@ -316,10 +316,14 @@ body {
   color: var(--on-surface);
 }
 
-/* Farsi font override — applied when body.lang-fa */
-body.lang-fa .auth-card,
-body.lang-fa .auth-card * {
-  font-family: 'Vazirmatn', system-ui, sans-serif;
+/* Farsi font override — swap the --font token so every component switches cleanly */
+body.lang-fa {
+  --font: 'Vazirmatn', system-ui, sans-serif;
+}
+
+/* Dashboard topbar: switcher sits inline, not fixed */
+.topbar-actions .lang-switcher {
+  position: static;
 }
 
 /* ── APP SHELL ──────────────────────────────────────────── */

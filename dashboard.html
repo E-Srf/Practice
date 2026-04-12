@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ForexRM — Dashboard</title>
+  <title>OpoFinance — Dashboard</title>
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
@@ -26,33 +26,33 @@
         <div class="stat-card stat-purple" onclick="window.location='phase1.html'" style="cursor:pointer">
           <div class="stat-card-accent"></div>
           <div class="stat-icon"><span class="material-icons-round">assignment</span></div>
-          <div class="stat-label">Pending Phase 1</div>
+          <div class="stat-label" data-i18n="dash.stat.pending1">Pending Phase 1</div>
           <div class="stat-value">47</div>
-          <div class="stat-note">Results emailed within 24 hrs</div>
+          <div class="stat-note" data-i18n="dash.stat.note.24h">Results emailed within 24 hrs</div>
         </div>
 
         <div class="stat-card stat-blue" onclick="window.location='phase2.html'" style="cursor:pointer">
           <div class="stat-card-accent"></div>
           <div class="stat-icon"><span class="material-icons-round">assignment_turned_in</span></div>
-          <div class="stat-label">Pending Phase 2</div>
+          <div class="stat-label" data-i18n="dash.stat.pending2">Pending Phase 2</div>
           <div class="stat-value">23</div>
-          <div class="stat-note">Results emailed within 48 hrs</div>
+          <div class="stat-note" data-i18n="dash.stat.note.48h">Results emailed within 48 hrs</div>
         </div>
 
         <div class="stat-card stat-green" onclick="window.location='funded.html'" style="cursor:pointer">
           <div class="stat-card-accent"></div>
           <div class="stat-icon"><span class="material-icons-round">account_balance_wallet</span></div>
-          <div class="stat-label">Funded Accounts Today</div>
+          <div class="stat-label" data-i18n="dash.stat.funded-today">Funded Accounts Today</div>
           <div class="stat-value">8</div>
-          <div class="stat-note">↑ 3 more than yesterday</div>
+          <div class="stat-note" data-i18n="dash.stat.note.funded">↑ 3 more than yesterday</div>
         </div>
 
         <div class="stat-card stat-yellow">
           <div class="stat-card-accent"></div>
           <div class="stat-icon"><span class="material-icons-round">people</span></div>
-          <div class="stat-label">Total Active Traders</div>
+          <div class="stat-label" data-i18n="dash.stat.active-traders">Total Active Traders</div>
           <div class="stat-value">312</div>
-          <div class="stat-note">Across all account stages</div>
+          <div class="stat-note" data-i18n="dash.stat.note.traders">Across all account stages</div>
         </div>
       </div>
 
@@ -62,8 +62,8 @@
         <!-- Activity Feed -->
         <div class="card">
           <div class="flex-between mb-16">
-            <div class="card-title" style="margin-bottom:0">Recent Activity</div>
-            <button class="btn btn-text" style="font-size:12px;padding:4px 8px">View all</button>
+            <div class="card-title" style="margin-bottom:0" data-i18n="dash.activity.title">Recent Activity</div>
+            <button class="btn btn-text" style="font-size:12px;padding:4px 8px" data-i18n="dash.btn.view-all">View all</button>
           </div>
 
           <div class="activity-list">
@@ -78,7 +78,7 @@
             </div>
 
             <div class="activity-item">
-              <div class="activity-icon" style="background:rgba(196,170,255,.12)">
+              <div class="activity-icon" style="background:rgba(34,197,94,.12)">
                 <span class="material-icons-round" style="color:var(--primary)">add_circle</span>
               </div>
               <div class="activity-body">
@@ -134,11 +134,11 @@
 
           <!-- Phase Overview -->
           <div class="card">
-            <div class="card-title">Phase Conversion Rates</div>
+            <div class="card-title" data-i18n="dash.phase-rates.title">Phase Conversion Rates</div>
             <div style="display:flex;flex-direction:column;gap:16px">
               <div>
                 <div class="flex-between mb-4">
-                  <span class="text-sm">Phase 1 → Phase 2</span>
+                  <span class="text-sm" data-i18n="dash.phase-rates.p1p2">Phase 1 → Phase 2</span>
                   <span class="text-sm font-semibold text-primary">62%</span>
                 </div>
                 <div class="progress-bar">
@@ -147,7 +147,7 @@
               </div>
               <div>
                 <div class="flex-between mb-4">
-                  <span class="text-sm">Phase 2 → Funded</span>
+                  <span class="text-sm" data-i18n="dash.phase-rates.p2f">Phase 2 → Funded</span>
                   <span class="text-sm font-semibold text-success">48%</span>
                 </div>
                 <div class="progress-bar">
@@ -156,7 +156,7 @@
               </div>
               <div>
                 <div class="flex-between mb-4">
-                  <span class="text-sm">Funded Retention (30d)</span>
+                  <span class="text-sm" data-i18n="dash.phase-rates.retention">Funded Retention (30d)</span>
                   <span class="text-sm font-semibold" style="color:var(--info)">81%</span>
                 </div>
                 <div class="progress-bar">
@@ -165,7 +165,7 @@
               </div>
               <div>
                 <div class="flex-between mb-4">
-                  <span class="text-sm">Overall Drawdown Usage</span>
+                  <span class="text-sm" data-i18n="dash.phase-rates.drawdown">Overall Drawdown Usage</span>
                   <span class="text-sm font-semibold text-warning">34%</span>
                 </div>
                 <div class="progress-bar">
@@ -177,26 +177,26 @@
 
           <!-- Quick Stats -->
           <div class="card">
-            <div class="card-title">Today at a Glance</div>
+            <div class="card-title" data-i18n="dash.glance.title">Today at a Glance</div>
             <div style="display:flex;flex-direction:column;gap:12px">
               <div class="flex-between">
-                <span class="text-sm text-muted">New Applications</span>
+                <span class="text-sm text-muted" data-i18n="dash.glance.new-apps">New Applications</span>
                 <span class="font-semibold" style="font-size:15px">19</span>
               </div>
               <div class="flex-between">
-                <span class="text-sm text-muted">Emails Sent</span>
+                <span class="text-sm text-muted" data-i18n="dash.glance.emails">Emails Sent</span>
                 <span class="font-semibold" style="font-size:15px">31</span>
               </div>
               <div class="flex-between">
-                <span class="text-sm text-muted">Accounts Reviewed</span>
+                <span class="text-sm text-muted" data-i18n="dash.glance.reviewed">Accounts Reviewed</span>
                 <span class="font-semibold" style="font-size:15px">28</span>
               </div>
               <div class="flex-between">
-                <span class="text-sm text-muted">Payouts Processed</span>
+                <span class="text-sm text-muted" data-i18n="dash.glance.payouts">Payouts Processed</span>
                 <span class="font-semibold text-success" style="font-size:15px">$24,800</span>
               </div>
               <div class="flex-between">
-                <span class="text-sm text-muted">Risk Alerts</span>
+                <span class="text-sm text-muted" data-i18n="dash.glance.alerts">Risk Alerts</span>
                 <span class="font-semibold text-warning" style="font-size:15px">4</span>
               </div>
             </div>
@@ -204,26 +204,26 @@
 
           <!-- Pending Email Queue -->
           <div class="card">
-            <div class="card-title">Email Queue</div>
+            <div class="card-title" data-i18n="dash.queue.title">Email Queue</div>
             <div style="display:flex;flex-direction:column;gap:10px">
               <div class="flex-between">
                 <div class="flex-center gap-8">
                   <span class="badge badge-pending">Queued</span>
-                  <span class="text-sm">Phase 1 Results</span>
+                  <span class="text-sm" data-i18n="dash.queue.p1">Phase 1 Results</span>
                 </div>
                 <span class="text-xs text-muted">5 emails</span>
               </div>
               <div class="flex-between">
                 <div class="flex-center gap-8">
                   <span class="badge badge-pending">Queued</span>
-                  <span class="text-sm">Phase 2 Results</span>
+                  <span class="text-sm" data-i18n="dash.queue.p2">Phase 2 Results</span>
                 </div>
                 <span class="text-xs text-muted">3 emails</span>
               </div>
               <div class="flex-between">
                 <div class="flex-center gap-8">
                   <span class="badge badge-sent">Sent</span>
-                  <span class="text-sm">Funded Welcome</span>
+                  <span class="text-sm" data-i18n="dash.queue.funded">Funded Welcome</span>
                 </div>
                 <span class="text-xs text-muted">8 emails</span>
               </div>
@@ -236,21 +236,21 @@
       <!-- Accounts table snapshot -->
       <div class="card" style="margin-top:4px">
         <div class="flex-between mb-16">
-          <div class="card-title" style="margin-bottom:0">Recent Account Reviews</div>
-          <a href="phase1.html" class="btn btn-outlined btn-sm">View All Phase 1</a>
+          <div class="card-title" style="margin-bottom:0" data-i18n="dash.reviews.title">Recent Account Reviews</div>
+          <a href="phase1.html" class="btn btn-outlined btn-sm" data-i18n="dash.btn.view-p1">View All Phase 1</a>
         </div>
 
         <div class="table-container">
           <table>
             <thead>
               <tr>
-                <th>Account ID</th>
-                <th>Trader</th>
-                <th>Phase</th>
-                <th>Account Size</th>
-                <th>P&L</th>
-                <th>Drawdown</th>
-                <th>Status</th>
+                <th data-i18n="dash.table.account-id">Account ID</th>
+                <th data-i18n="dash.table.trader">Trader</th>
+                <th data-i18n="dash.table.phase">Phase</th>
+                <th data-i18n="dash.table.size">Account Size</th>
+                <th data-i18n="dash.table.pnl">P&amp;L</th>
+                <th data-i18n="dash.table.drawdown">Drawdown</th>
+                <th data-i18n="dash.table.status">Status</th>
               </tr>
             </thead>
             <tbody>
@@ -310,5 +310,6 @@
 
 <script src="assets/js/layout.js"></script>
 <script src="assets/js/dashboard.js"></script>
+<script src="assets/js/i18n.js"></script>
 </body>
 </html>

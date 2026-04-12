@@ -28,12 +28,12 @@ function toggleTheme() {
 applyTheme(getTheme());
 
 const NAV_ITEMS = [
-  { href: 'dashboard.html',     icon: 'dashboard',              label: 'Dashboard',        badge: null },
-  { href: 'phase1.html',        icon: 'assignment',             label: 'Phase 1 Accounts', badge: '47' },
-  { href: 'phase2.html',        icon: 'assignment_turned_in',   label: 'Phase 2 Accounts', badge: '23' },
-  { href: 'funded.html',        icon: 'account_balance_wallet', label: 'Funded Accounts',  badge: null },
-  { href: 'notifications.html', icon: 'notifications',          label: 'Notifications',    badge: '5'  },
-  { href: 'settings.html',      icon: 'settings',               label: 'Settings',         badge: null },
+  { href: 'dashboard.html',     icon: 'dashboard',              label: 'Dashboard',        i18n: 'nav.dashboard',      badge: null },
+  { href: 'phase1.html',        icon: 'assignment',             label: 'Phase 1 Accounts', i18n: 'nav.phase1',         badge: '47' },
+  { href: 'phase2.html',        icon: 'assignment_turned_in',   label: 'Phase 2 Accounts', i18n: 'nav.phase2',         badge: '23' },
+  { href: 'funded.html',        icon: 'account_balance_wallet', label: 'Funded Accounts',  i18n: 'nav.funded',         badge: null },
+  { href: 'notifications.html', icon: 'notifications',          label: 'Notifications',    i18n: 'nav.notifications',  badge: '5'  },
+  { href: 'settings.html',      icon: 'settings',               label: 'Settings',         i18n: 'nav.settings',       badge: null },
 ];
 
 function initLayout(config = {}) {
@@ -47,7 +47,7 @@ function initLayout(config = {}) {
     return `
       <a href="${item.href}" class="nav-item ${active}">
         <span class="material-icons-round">${item.icon}</span>
-        ${item.label}
+        <span data-i18n="${item.i18n}">${item.label}</span>
         ${badge}
       </a>`;
   }).join('');
@@ -62,13 +62,13 @@ function initLayout(config = {}) {
           </div>
           <div>
             <div class="brand-name">OpoFinance</div>
-            <div class="brand-tag">Risk Management</div>
+            <div class="brand-tag" data-i18n="brand.sub">Risk Management</div>
           </div>
         </a>
       </div>
 
       <nav class="sidebar-nav">
-        <div class="nav-section-label">Main Menu</div>
+        <div class="nav-section-label" data-i18n="nav.section.main">Main Menu</div>
         ${navHTML}
       </nav>
 
@@ -77,7 +77,7 @@ function initLayout(config = {}) {
           <div class="avatar">EL</div>
           <div>
             <div class="user-info-name">Elahe Ahmadi</div>
-            <div class="user-info-role">Risk Analyst</div>
+            <div class="user-info-role" data-i18n="sidebar.role">Risk Analyst</div>
           </div>
         </div>
       </div>`;
@@ -100,10 +100,15 @@ function initLayout(config = {}) {
 
       <div class="topbar-search">
         <span class="material-icons-round">search</span>
-        <input type="text" placeholder="Search accounts, traders…">
+        <input type="text" data-i18n-placeholder="topbar.search" placeholder="Search accounts, traders…">
       </div>
 
       <div class="topbar-actions">
+        <div class="lang-switcher" role="group" aria-label="Language selector">
+          <button class="lang-btn active" data-lang="en" aria-pressed="true">EN</button>
+          <button class="lang-btn"        data-lang="fa" aria-pressed="false">FA</button>
+        </div>
+
         <button class="btn btn-icon" id="themeToggle" aria-label="Toggle theme">
           <span class="material-icons-round" id="themeIcon">light_mode</span>
         </button>
@@ -117,9 +122,9 @@ function initLayout(config = {}) {
       </div>`;
 
     // Mobile menu toggle
-    const menuBtn = document.getElementById('menuToggle');
+    const menuBtn  = document.getElementById('menuToggle');
     const sidebarEl = document.getElementById('sidebar');
-    const overlay = document.getElementById('sidebarOverlay');
+    const overlay  = document.getElementById('sidebarOverlay');
 
     if (menuBtn && sidebarEl) {
       menuBtn.addEventListener('click', () => {
