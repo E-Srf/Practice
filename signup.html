@@ -8,6 +8,12 @@
 </head>
 <body class="auth-page">
 
+  <!-- Language switcher -->
+  <div class="lang-switcher" role="group" aria-label="Language selector">
+    <button class="lang-btn active" data-lang="en" aria-pressed="true">EN</button>
+    <button class="lang-btn"        data-lang="fa" aria-pressed="false">FA</button>
+  </div>
+
   <div class="auth-card">
     <div class="auth-logo">
       <div class="auth-logo-icon">
@@ -15,47 +21,63 @@
       </div>
       <div>
         <div class="auth-logo-text">OpoFinance</div>
-        <div class="auth-logo-sub">Risk Management Portal</div>
+        <div class="auth-logo-sub" data-i18n="brand.sub">Risk Management Portal</div>
       </div>
     </div>
 
-    <h1 class="auth-title">Create account</h1>
-    <p class="auth-subtitle">Set up your risk management workspace</p>
+    <h1 class="auth-title" data-i18n="signup.title">Create account</h1>
+    <p class="auth-subtitle" data-i18n="signup.subtitle">Set up your risk management workspace</p>
 
     <form id="signupForm" novalidate>
       <div class="form-field">
-        <label for="fullName">Full Name</label>
-        <input type="text" id="fullName" placeholder="Elahe Ahmadi" autocomplete="name">
+        <label for="fullName" data-i18n="signup.label.fullname">Full Name</label>
+        <input type="text" id="fullName"
+               data-i18n-placeholder="ph.fullname"
+               placeholder="Elahe Ahmadi"
+               autocomplete="name">
       </div>
 
       <div class="form-field">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" placeholder="elahe@opofinance.com" autocomplete="email">
+        <label for="email" data-i18n="signup.label.email">Email Address</label>
+        <input type="email" id="email"
+               data-i18n-placeholder="ph.email"
+               placeholder="elahe@opofinance.com"
+               autocomplete="email">
       </div>
 
       <div class="form-field">
-        <label for="password">Password</label>
-        <input type="password" id="password" placeholder="Choose a strong password" autocomplete="new-password">
+        <label for="password" data-i18n="signup.label.password">Password</label>
+        <input type="password" id="password"
+               data-i18n-placeholder="ph.new.password"
+               placeholder="Choose a strong password"
+               autocomplete="new-password">
       </div>
 
       <div class="form-field">
-        <label for="confirmPass">Confirm Password</label>
-        <input type="password" id="confirmPass" placeholder="Repeat your password" autocomplete="new-password">
+        <label for="confirmPass" data-i18n="signup.label.confirm">Confirm Password</label>
+        <input type="password" id="confirmPass"
+               data-i18n-placeholder="ph.confirm.password"
+               placeholder="Repeat your password"
+               autocomplete="new-password">
       </div>
 
-      <div class="auth-error" id="signupError">Passwords do not match. Please try again.</div>
+      <div class="auth-error" id="signupError">
+        <span data-i18n="signup.error">Passwords do not match. Please try again.</span>
+      </div>
 
       <button type="submit" class="btn btn-primary" style="margin-top:8px">
         <span class="material-icons-round" style="font-size:18px">person_add</span>
-        Create Account
+        <span data-i18n="signup.submit">Create Account</span>
       </button>
     </form>
 
     <div class="auth-footer">
-      Already have an account? <a href="index.html">Sign in</a>
+      <span data-i18n="signup.footer.text">Already have an account?</span>
+      <a href="index.html" data-i18n="signup.footer.link">Sign in</a>
     </div>
   </div>
 
+  <script src="assets/js/i18n.js"></script>
   <script src="assets/js/signup.js"></script>
 </body>
 </html>

@@ -8,6 +8,12 @@
 </head>
 <body class="auth-page">
 
+  <!-- Language switcher -->
+  <div class="lang-switcher" role="group" aria-label="Language selector">
+    <button class="lang-btn active" data-lang="en" aria-pressed="true">EN</button>
+    <button class="lang-btn"        data-lang="fa" aria-pressed="false">FA</button>
+  </div>
+
   <div class="auth-card">
     <div class="auth-logo">
       <div class="auth-logo-icon">
@@ -15,44 +21,53 @@
       </div>
       <div>
         <div class="auth-logo-text">OpoFinance</div>
-        <div class="auth-logo-sub">Risk Management Portal</div>
+        <div class="auth-logo-sub" data-i18n="brand.sub">Risk Management Portal</div>
       </div>
     </div>
 
-    <h1 class="auth-title">Welcome back</h1>
-    <p class="auth-subtitle">Sign in to your risk management dashboard</p>
+    <h1 class="auth-title" data-i18n="login.title">Welcome back</h1>
+    <p class="auth-subtitle" data-i18n="login.subtitle">Sign in to your risk management dashboard</p>
 
     <div class="auth-error" id="authError">
       <span class="material-icons-round" style="font-size:16px;vertical-align:middle;margin-right:6px">error_outline</span>
-      Invalid email or password. Please try again.
+      <span data-i18n="login.error">Invalid email or password. Please try again.</span>
     </div>
 
     <form id="loginForm" novalidate>
       <div class="form-field">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" placeholder="elahe@opofinance.com" autocomplete="email">
+        <label for="email" data-i18n="login.label.email">Email Address</label>
+        <input type="email" id="email"
+               data-i18n-placeholder="ph.email"
+               placeholder="elahe@opofinance.com"
+               autocomplete="email">
       </div>
 
       <div class="form-field">
-        <label for="password">Password</label>
-        <input type="password" id="password" placeholder="Enter your password" autocomplete="current-password">
+        <label for="password" data-i18n="login.label.password">Password</label>
+        <input type="password" id="password"
+               data-i18n-placeholder="ph.login.password"
+               placeholder="Enter your password"
+               autocomplete="current-password">
       </div>
 
       <div style="display:flex;justify-content:flex-end;margin-bottom:24px">
-        <a href="#" class="btn btn-text" style="padding:4px 0;font-size:13px">Forgot password?</a>
+        <a href="#" class="btn btn-text" style="padding:4px 0;font-size:13px"
+           data-i18n="login.forgot">Forgot password?</a>
       </div>
 
       <button type="submit" class="btn btn-primary">
         <span class="material-icons-round" style="font-size:18px">login</span>
-        Sign In
+        <span data-i18n="login.submit">Sign In</span>
       </button>
     </form>
 
     <div class="auth-footer">
-      Don't have an account? <a href="signup.html">Create account</a>
+      <span data-i18n="login.footer.text">Don't have an account?</span>
+      <a href="signup.html" data-i18n="login.footer.link">Create account</a>
     </div>
   </div>
 
+  <script src="assets/js/i18n.js"></script>
   <script src="assets/js/login.js"></script>
 </body>
 </html>

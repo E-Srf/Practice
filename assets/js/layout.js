@@ -56,13 +56,15 @@ function initLayout(config = {}) {
   if (sidebar) {
     sidebar.innerHTML = `
       <div class="sidebar-header">
-        <div class="brand-icon">
-          <span class="material-icons-round">show_chart</span>
-        </div>
-        <div>
-          <div class="brand-name">OpoFinance</div>
-          <div class="brand-tag">Risk Management</div>
-        </div>
+        <a href="index.html" class="brand-link">
+          <div class="brand-icon">
+            <span class="material-icons-round">show_chart</span>
+          </div>
+          <div>
+            <div class="brand-name">OpoFinance</div>
+            <div class="brand-tag">Risk Management</div>
+          </div>
+        </a>
       </div>
 
       <nav class="sidebar-nav">
