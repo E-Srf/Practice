@@ -23,6 +23,24 @@ const TRANSLATIONS = {
     /* ── topbar ── */
     'topbar.search'          : 'Search accounts, traders…',
 
+    /* ── page titles / subtitles ── */
+    'page.dashboard.title'   : 'Dashboard',
+    'page.dashboard.subtitle': 'Overview',
+    'page.phase1.title'      : 'Phase 1 Accounts',
+    'page.phase1.subtitle'   : 'Challenge evaluation — 24hr email SLA',
+    'page.phase2.title'      : 'Phase 2 Accounts',
+    'page.phase2.subtitle'   : 'Verification stage — 48hr email SLA',
+    'page.funded.title'      : 'Funded Accounts',
+    'page.funded.subtitle'   : 'Live trading accounts under management',
+    'page.notif.title'       : 'Email Notifications',
+    'page.notif.subtitle'    : 'Trader communication management',
+    'page.settings.title'    : 'Settings',
+    'page.settings.subtitle' : 'Account & preferences',
+
+    /* ── dashboard greeting ── */
+    'dash.greeting'          : 'Good morning, Elahe 👋',
+    'dash.greeting.sub'      : "Here's what's happening across your accounts today — Wednesday, 9 April 2026",
+
     /* ── dashboard stats ── */
     'dash.stat.pending1'          : 'Pending Phase 1',
     'dash.stat.pending2'          : 'Pending Phase 2',
@@ -32,6 +50,21 @@ const TRANSLATIONS = {
     'dash.stat.note.48h'          : 'Results emailed within 48 hrs',
     'dash.stat.note.funded'       : '↑ 3 more than yesterday',
     'dash.stat.note.traders'      : 'Across all account stages',
+
+    /* ── dashboard activity ── */
+    'dash.act.1.suffix'      : ' passed Phase 2 evaluation — promoted to Funded',
+    'dash.act.2.suffix'      : ' started Phase 1 — $100K account',
+    'dash.act.3.suffix'      : ' breached max drawdown — Phase 1 failed',
+    'dash.act.4.prefix'      : 'Batch notification sent to',
+    'dash.act.4.suffix'      : ' — Phase 1 results',
+    'dash.act.5.suffix'      : ' approaching daily loss limit — 78% used',
+    'dash.act.6.suffix'      : ' requested $4,200 payout — under review',
+    'dash.act.1.time'        : '2 minutes ago',
+    'dash.act.2.time'        : '18 minutes ago',
+    'dash.act.3.time'        : '41 minutes ago',
+    'dash.act.4.time'        : '1 hour ago',
+    'dash.act.5.time'        : '2 hours ago',
+    'dash.act.6.time'        : '3 hours ago',
 
     /* ── dashboard cards ── */
     'dash.activity.title'         : 'Recent Activity',
@@ -51,6 +84,9 @@ const TRANSLATIONS = {
     'dash.queue.p1'               : 'Phase 1 Results',
     'dash.queue.p2'               : 'Phase 2 Results',
     'dash.queue.funded'           : 'Funded Welcome',
+    'dash.queue.count.p1'         : '5 emails',
+    'dash.queue.count.p2'         : '3 emails',
+    'dash.queue.count.funded'     : '8 emails',
     'dash.reviews.title'          : 'Recent Account Reviews',
     'dash.btn.view-p1'            : 'View All Phase 1',
 
@@ -62,6 +98,251 @@ const TRANSLATIONS = {
     'dash.table.pnl'         : 'P&L',
     'dash.table.drawdown'    : 'Drawdown',
     'dash.table.status'      : 'Status',
+
+    /* ── shared status badges ── */
+    'status.pending'         : 'Pending',
+    'status.passed'          : 'Passed',
+    'status.failed'          : 'Failed',
+    'status.active'          : 'Active',
+    'status.at-risk'         : 'At Risk',
+    'status.suspended'       : 'Suspended',
+    'status.in-progress'     : 'In Progress',
+    'status.queued'          : 'Queued',
+    'status.sent'            : 'Sent',
+
+    /* ── phase labels ── */
+    'phase.1'                : 'Phase 1',
+    'phase.2'                : 'Phase 2',
+    'phase.funded'           : 'Funded',
+
+    /* ── shared filter chips ── */
+    'filter.all'             : 'All',
+    'filter.pending'         : 'Pending',
+    'filter.passed'          : 'Passed',
+    'filter.failed'          : 'Failed',
+    'filter.active'          : 'Active',
+    'filter.at-risk'         : 'At Risk',
+    'filter.suspended'       : 'Suspended',
+
+    /* ── shared buttons ── */
+    'btn.export-csv'         : 'Export CSV',
+    'btn.edit'               : 'Edit',
+    'btn.preview'            : 'Preview',
+    'btn.send-now'           : 'Send Now',
+    'btn.cancel'             : 'Cancel',
+    'btn.save-changes'       : 'Save Changes',
+
+    /* ── shared empty state ── */
+    'empty.title'            : 'No accounts found',
+    'empty.desc'             : 'Try adjusting your search or filter criteria.',
+
+    /* ── shared table headers ── */
+    'table.account-id'       : 'Account ID',
+    'table.trader'           : 'Trader Name',
+    'table.size'             : 'Account Size',
+    'table.start'            : 'Start Date',
+    'table.days'             : 'Trading Days',
+    'table.pnl'              : 'P&L',
+    'table.max-dd'           : 'Max Drawdown',
+    'table.daily-dd'         : 'Daily DD Used',
+    'table.status'           : 'Status',
+    'table.actions'          : 'Actions',
+
+    /* ── phase 1 stats ── */
+    'p1.stat.pending.label'  : 'Pending Review',
+    'p1.stat.pending.note'   : 'Awaiting evaluation',
+    'p1.stat.passed.label'   : 'Passed',
+    'p1.stat.passed.note'    : 'This month',
+    'p1.stat.failed.label'   : 'Failed',
+    'p1.stat.failed.note'    : 'This month',
+    'p1.stat.rate.label'     : 'Pass Rate',
+    'p1.stat.rate.note'      : '↑ 4% vs last month',
+    'p1.page.title'          : 'Phase 1 Accounts',
+    'p1.page.subtitle'       : 'Review and evaluate Phase 1 challenge accounts — results emailed to traders within 24 hours',
+    'p1.search.ph'           : 'Search trader or account ID…',
+
+    /* ── phase 2 stats ── */
+    'p2.stat.pending.label'  : 'Pending Review',
+    'p2.stat.pending.note'   : '48hr email SLA',
+    'p2.stat.passed.label'   : 'Passed to Funded',
+    'p2.stat.passed.note'    : 'This month',
+    'p2.stat.failed.label'   : 'Failed',
+    'p2.stat.failed.note'    : 'This month',
+    'p2.stat.rate.label'     : 'Pass Rate',
+    'p2.stat.rate.note'      : 'Tighter criteria',
+    'p2.page.title'          : 'Phase 2 Accounts',
+    'p2.page.subtitle'       : 'Phase 2 verification accounts — results emailed to traders within 48 hours',
+    'p2.search.ph'           : 'Search trader or account ID…',
+    'p2.info.before'         : 'Phase 2 requires a minimum of',
+    'p2.info.target'         : '5% profit target',
+    'p2.info.after'          : 'within 60 days with a stricter 5% max drawdown and 2% daily loss limit.',
+    'p2.table.profit-target' : 'Profit Target',
+
+    /* ── funded accounts stats ── */
+    'funded.stat.traders.label'  : 'Active Traders',
+    'funded.stat.traders.note'   : '↑ 8 new today',
+    'funded.stat.capital.label'  : 'Total Capital',
+    'funded.stat.capital.note'   : 'Under management',
+    'funded.stat.payouts.label'  : 'Payouts This Month',
+    'funded.stat.payouts.note'   : 'Across all traders',
+    'funded.stat.risk.label'     : 'At-Risk Accounts',
+    'funded.stat.risk.note'      : '>70% drawdown used',
+    'funded.page.title'          : 'Funded Accounts',
+    'funded.page.subtitle'       : 'Live funded trader accounts — monitor performance and risk in real time',
+    'funded.search.ph'           : 'Search trader or account ID…',
+    'funded.table.split'         : 'Profit Split',
+    'funded.table.monthly-pnl'   : 'Monthly P&L',
+    'funded.table.dd-used'       : 'Drawdown Used',
+    'funded.table.payouts'       : 'Total Payouts',
+
+    /* ── notifications stats ── */
+    'notif.stat.sent.label'      : 'Sent Today',
+    'notif.stat.sent.note'       : 'Across all templates',
+    'notif.stat.queued.label'    : 'Queued',
+    'notif.stat.queued.note'     : 'Awaiting dispatch',
+    'notif.stat.openrate.label'  : 'Open Rate',
+    'notif.stat.openrate.note'   : 'Last 30 days',
+    'notif.stat.failed.label'    : 'Failed',
+    'notif.stat.failed.note'     : 'Delivery failures',
+    'notif.page.title'           : 'Email Notifications',
+    'notif.page.subtitle'        : 'Manage and track outgoing email notifications to traders',
+    'notif.tab.log'              : 'Notification Log',
+    'notif.tab.templates'        : 'Templates',
+    'notif.tab.queue'            : 'Queue (8)',
+    'notif.search.ph'            : 'Search by trader or subject…',
+    'notif.filter.sent'          : 'Sent',
+    'notif.filter.queued'        : 'Queued',
+    'notif.filter.failed'        : 'Failed',
+    'notif.log.to'               : 'To:',
+    'notif.status.sent'          : 'Sent',
+    'notif.status.queued'        : 'Queued',
+    'notif.status.failed'        : 'Failed',
+    'notif.time.yesterday'       : 'Yesterday',
+    'notif.time.scheduled'       : 'Scheduled',
+    'notif.tpl.btn-new'          : 'New Template',
+    'notif.tpl.1.name'           : 'Phase 1 — Passed',
+    'notif.tpl.1.desc'           : 'Congratulations email sent to traders who successfully completed Phase 1. Includes Phase 2 onboarding instructions.',
+    'notif.tpl.1.usage'          : 'Used 134× this month',
+    'notif.tpl.2.name'           : 'Phase 1 — Failed',
+    'notif.tpl.2.desc'           : 'Notification sent to traders who did not meet Phase 1 criteria. Includes feedback and retry options.',
+    'notif.tpl.2.usage'          : 'Used 82× this month',
+    'notif.tpl.3.name'           : 'Phase 2 — Passed / Funded',
+    'notif.tpl.3.desc'           : 'Welcome to funded trader status email. Includes account credentials, platform access, and payout schedule.',
+    'notif.tpl.3.usage'          : 'Used 64× this month',
+    'notif.tpl.4.name'           : 'Risk Alert — Drawdown Warning',
+    'notif.tpl.4.desc'           : 'Automated alert sent when a trader exceeds 70% of their maximum allowed drawdown.',
+    'notif.tpl.4.usage'          : 'Used 28× this month',
+    'notif.tpl.5.name'           : 'Payout Confirmation',
+    'notif.tpl.5.desc'           : "Sent when a trader's payout request is processed. Includes amount, payment method, and expected arrival time.",
+    'notif.tpl.5.usage'          : 'Used 41× this month',
+    'notif.tpl.status.active'    : 'Active',
+    'notif.queue.banner.count'   : '8 emails',
+    'notif.queue.banner.text'    : 'are queued for dispatch — Phase 1 & Phase 2 results will be sent automatically within SLA windows.',
+    'notif.queue.btn-send-all'   : 'Send All Now',
+    'notif.queue.col.recipient'  : 'Recipient',
+    'notif.queue.col.template'   : 'Template',
+    'notif.queue.col.id'         : 'Account ID',
+    'notif.queue.col.scheduled'  : 'Scheduled',
+    'notif.queue.col.sla'        : 'SLA Deadline',
+    'notif.queue.col.actions'    : 'Actions',
+
+    /* ── settings ── */
+    'settings.page.title'        : 'Settings',
+    'settings.page.subtitle'     : 'Manage your profile, notification preferences, and risk parameters',
+    'settings.nav.profile'       : 'Profile',
+    'settings.nav.notifications' : 'Notifications',
+    'settings.nav.risk'          : 'Risk Parameters',
+    'settings.nav.appearance'    : 'Appearance',
+    'settings.nav.security'      : 'Security',
+
+    'settings.profile.title'     : 'Profile Information',
+    'settings.profile.photo'     : 'Profile Photo',
+    'settings.profile.photo.sub' : 'Avatar is generated from your initials',
+    'settings.profile.photo.btn' : 'Change Photo',
+    'settings.profile.name.label': 'Full Name',
+    'settings.profile.name.desc' : 'Your display name across the platform',
+    'settings.profile.email.label': 'Email Address',
+    'settings.profile.email.desc': 'Used for login and system alerts',
+    'settings.profile.title.label': 'Job Title',
+    'settings.profile.title.desc': 'Shown on your profile and reports',
+    'settings.profile.tz.label'  : 'Timezone',
+    'settings.profile.tz.desc'   : 'Used for scheduling and timestamps',
+    'settings.profile.tz.opt1'   : 'UTC+3:30 — Tehran',
+    'settings.profile.tz.opt2'   : 'UTC+0 — London',
+    'settings.profile.tz.opt3'   : 'UTC-5 — New York',
+    'settings.profile.tz.opt4'   : 'UTC+8 — Singapore',
+
+    'settings.notif.title'       : 'Email Notification Preferences',
+    'settings.notif.p1.label'    : 'Phase 1 Results',
+    'settings.notif.p1.desc'     : 'Notify me when Phase 1 reviews are completed',
+    'settings.notif.p2.label'    : 'Phase 2 Results',
+    'settings.notif.p2.desc'     : 'Notify me when Phase 2 evaluations are done',
+    'settings.notif.risk.label'  : 'Risk Alerts',
+    'settings.notif.risk.desc'   : 'Receive alerts for drawdown warnings and breaches',
+    'settings.notif.payout.label': 'Payout Requests',
+    'settings.notif.payout.desc' : 'Notify me when traders submit payout requests',
+    'settings.notif.daily.label' : 'Daily Summary Report',
+    'settings.notif.daily.desc'  : 'Receive a daily digest at 08:00 each morning',
+    'settings.notif.time.label'  : 'Delivery Time',
+    'settings.notif.time.desc'   : 'Default time for batch email dispatch',
+    'settings.notif.save'        : 'Save Preferences',
+
+    'settings.risk.p1.title'     : 'Phase 1 Challenge Rules',
+    'settings.risk.p2.title'     : 'Phase 2 Verification Rules',
+    'settings.risk.profit.label' : 'Profit Target',
+    'settings.risk.p1profit.desc': 'Required profit to pass Phase 1',
+    'settings.risk.p2profit.desc': 'Required profit to pass Phase 2',
+    'settings.risk.dd.label'     : 'Max Drawdown',
+    'settings.risk.p1dd.desc'    : 'Maximum overall account drawdown allowed',
+    'settings.risk.p2dd.desc'    : 'Stricter drawdown rule for Phase 2',
+    'settings.risk.loss.label'   : 'Daily Loss Limit',
+    'settings.risk.p1loss.desc'  : 'Maximum loss allowed in a single trading day',
+    'settings.risk.p2loss.desc'  : 'Daily drawdown cap for Phase 2',
+    'settings.risk.days.label'   : 'Trading Days (min)',
+    'settings.risk.days.desc'    : 'Minimum trading days required before evaluation',
+    'settings.risk.days.unit'    : 'days',
+    'settings.risk.reset'        : 'Reset to Defaults',
+    'settings.risk.save'         : 'Save Parameters',
+
+    'settings.appear.title'      : 'Appearance',
+    'settings.appear.mode.label' : 'Color Mode',
+    'settings.appear.mode.desc'  : 'Choose your preferred interface theme',
+    'settings.appear.dark'       : 'Dark Mode',
+    'settings.appear.light'      : 'Light Mode',
+    'settings.appear.compact.label': 'Compact Tables',
+    'settings.appear.compact.desc': 'Reduce row height in data tables for more density',
+    'settings.appear.sidebar.label': 'Sidebar Collapsed by Default',
+    'settings.appear.sidebar.desc': 'Start with the sidebar minimized on load',
+    'settings.appear.anim.label' : 'Animations',
+    'settings.appear.anim.desc'  : 'Enable UI transition animations',
+    'settings.appear.defview.label': 'Default Dashboard View',
+    'settings.appear.defview.desc': 'Page shown after login',
+    'settings.appear.defview.dash': 'Dashboard Overview',
+    'settings.appear.defview.p1' : 'Phase 1 Accounts',
+    'settings.appear.defview.p2' : 'Phase 2 Accounts',
+    'settings.appear.defview.funded': 'Funded Accounts',
+    'settings.appear.save'       : 'Save',
+
+    'settings.sec.pwd.title'     : 'Password',
+    'settings.sec.2fa.title'     : 'Two-Factor Authentication',
+    'settings.sec.cur-pwd.label' : 'Current Password',
+    'settings.sec.new-pwd.label' : 'New Password',
+    'settings.sec.conf-pwd.label': 'Confirm New Password',
+    'settings.sec.new-pwd.ph'    : 'At least 12 characters',
+    'settings.sec.conf-pwd.ph'   : 'Repeat new password',
+    'settings.sec.totp.label'    : 'Authenticator App (TOTP)',
+    'settings.sec.totp.desc'     : 'Require a verification code on each login',
+    'settings.sec.login-notif.label': 'Login Notifications',
+    'settings.sec.login-notif.desc': 'Email me when a new login is detected',
+    'settings.sec.signout'       : 'Sign Out',
+    'settings.sec.update-pwd'    : 'Update Password',
+
+    /* ── toast messages ── */
+    'toast.profile-saved'        : 'Profile saved successfully',
+    'toast.notif-saved'          : 'Notification settings saved',
+    'toast.risk-saved'           : 'Risk parameters updated',
+    'toast.appearance-saved'     : 'Appearance settings saved',
+    'toast.security-saved'       : 'Security settings updated',
 
     /* ── auth — login ── */
     'login.title'            : 'Welcome back',
@@ -111,6 +392,24 @@ const TRANSLATIONS = {
     /* ── topbar ── */
     'topbar.search'          : 'جستجوی حساب‌ها، تریدرها…',
 
+    /* ── page titles / subtitles ── */
+    'page.dashboard.title'   : 'داشبورد',
+    'page.dashboard.subtitle': 'نمای کلی',
+    'page.phase1.title'      : 'حساب‌های فاز ۱',
+    'page.phase1.subtitle'   : 'ارزیابی چالش — ایمیل ظرف ۲۴ ساعت',
+    'page.phase2.title'      : 'حساب‌های فاز ۲',
+    'page.phase2.subtitle'   : 'مرحله تأیید — ایمیل ظرف ۴۸ ساعت',
+    'page.funded.title'      : 'حساب‌های فاند شده',
+    'page.funded.subtitle'   : 'حساب‌های معاملاتی زنده تحت مدیریت',
+    'page.notif.title'       : 'اعلان‌های ایمیلی',
+    'page.notif.subtitle'    : 'مدیریت ارتباطات تریدر',
+    'page.settings.title'    : 'تنظیمات',
+    'page.settings.subtitle' : 'حساب و تنظیمات',
+
+    /* ── dashboard greeting ── */
+    'dash.greeting'          : 'صبح بخیر، الهه 👋',
+    'dash.greeting.sub'      : 'وضعیت حساب‌های شما امروز — چهارشنبه، ۲۱ فروردین ۱۴۰۵',
+
     /* ── dashboard stats ── */
     'dash.stat.pending1'          : 'فاز ۱ در انتظار',
     'dash.stat.pending2'          : 'فاز ۲ در انتظار',
@@ -120,6 +419,21 @@ const TRANSLATIONS = {
     'dash.stat.note.48h'          : 'نتایج ظرف ۴۸ ساعت ایمیل می‌شود',
     'dash.stat.note.funded'       : '↑ ۳ تا بیشتر از دیروز',
     'dash.stat.note.traders'      : 'در تمام مراحل حساب',
+
+    /* ── dashboard activity ── */
+    'dash.act.1.suffix'      : ' ارزیابی فاز ۲ را گذراند — ارتقا به فاند',
+    'dash.act.2.suffix'      : ' فاز ۱ را شروع کرد — حساب ۱۰۰ هزار دلاری',
+    'dash.act.3.suffix'      : ' حداکثر دراودان را نقض کرد — فاز ۱ رد شد',
+    'dash.act.4.prefix'      : 'اعلان دسته‌ای ارسال شد به',
+    'dash.act.4.suffix'      : ' — نتایج فاز ۱',
+    'dash.act.5.suffix'      : ' به حد زیان روزانه نزدیک شده — ۷۸٪ استفاده شده',
+    'dash.act.6.suffix'      : ' درخواست پرداخت ۴٬۲۰۰ دلاری داد — در حال بررسی',
+    'dash.act.1.time'        : '۲ دقیقه پیش',
+    'dash.act.2.time'        : '۱۸ دقیقه پیش',
+    'dash.act.3.time'        : '۴۱ دقیقه پیش',
+    'dash.act.4.time'        : '۱ ساعت پیش',
+    'dash.act.5.time'        : '۲ ساعت پیش',
+    'dash.act.6.time'        : '۳ ساعت پیش',
 
     /* ── dashboard cards ── */
     'dash.activity.title'         : 'فعالیت‌های اخیر',
@@ -139,6 +453,9 @@ const TRANSLATIONS = {
     'dash.queue.p1'               : 'نتایج فاز ۱',
     'dash.queue.p2'               : 'نتایج فاز ۲',
     'dash.queue.funded'           : 'خوش‌آمد فاند',
+    'dash.queue.count.p1'         : '۵ ایمیل',
+    'dash.queue.count.p2'         : '۳ ایمیل',
+    'dash.queue.count.funded'     : '۸ ایمیل',
     'dash.reviews.title'          : 'بررسی‌های اخیر حساب',
     'dash.btn.view-p1'            : 'مشاهده تمام فاز ۱',
 
@@ -150,6 +467,251 @@ const TRANSLATIONS = {
     'dash.table.pnl'         : 'سود/زیان',
     'dash.table.drawdown'    : 'دراودان',
     'dash.table.status'      : 'وضعیت',
+
+    /* ── shared status badges ── */
+    'status.pending'         : 'در انتظار',
+    'status.passed'          : 'قبول',
+    'status.failed'          : 'رد',
+    'status.active'          : 'فعال',
+    'status.at-risk'         : 'در خطر',
+    'status.suspended'       : 'معلق',
+    'status.in-progress'     : 'در جریان',
+    'status.queued'          : 'در صف',
+    'status.sent'            : 'ارسال شده',
+
+    /* ── phase labels ── */
+    'phase.1'                : 'فاز ۱',
+    'phase.2'                : 'فاز ۲',
+    'phase.funded'           : 'فاند شده',
+
+    /* ── shared filter chips ── */
+    'filter.all'             : 'همه',
+    'filter.pending'         : 'در انتظار',
+    'filter.passed'          : 'قبول',
+    'filter.failed'          : 'رد',
+    'filter.active'          : 'فعال',
+    'filter.at-risk'         : 'در خطر',
+    'filter.suspended'       : 'معلق',
+
+    /* ── shared buttons ── */
+    'btn.export-csv'         : 'دانلود CSV',
+    'btn.edit'               : 'ویرایش',
+    'btn.preview'            : 'پیش‌نمایش',
+    'btn.send-now'           : 'ارسال فوری',
+    'btn.cancel'             : 'انصراف',
+    'btn.save-changes'       : 'ذخیره تغییرات',
+
+    /* ── shared empty state ── */
+    'empty.title'            : 'حسابی یافت نشد',
+    'empty.desc'             : 'معیارهای جستجو یا فیلتر را تغییر دهید.',
+
+    /* ── shared table headers ── */
+    'table.account-id'       : 'شناسه حساب',
+    'table.trader'           : 'نام تریدر',
+    'table.size'             : 'اندازه حساب',
+    'table.start'            : 'تاریخ شروع',
+    'table.days'             : 'روزهای معاملاتی',
+    'table.pnl'              : 'سود/زیان',
+    'table.max-dd'           : 'حداکثر دراودان',
+    'table.daily-dd'         : 'دراودان روزانه',
+    'table.status'           : 'وضعیت',
+    'table.actions'          : 'اقدامات',
+
+    /* ── phase 1 stats ── */
+    'p1.stat.pending.label'  : 'در انتظار بررسی',
+    'p1.stat.pending.note'   : 'در انتظار ارزیابی',
+    'p1.stat.passed.label'   : 'قبول',
+    'p1.stat.passed.note'    : 'این ماه',
+    'p1.stat.failed.label'   : 'رد',
+    'p1.stat.failed.note'    : 'این ماه',
+    'p1.stat.rate.label'     : 'نرخ قبولی',
+    'p1.stat.rate.note'      : '↑ ۴٪ نسبت به ماه قبل',
+    'p1.page.title'          : 'حساب‌های فاز ۱',
+    'p1.page.subtitle'       : 'بررسی و ارزیابی حساب‌های فاز ۱ — نتایج ظرف ۲۴ ساعت ایمیل می‌شود',
+    'p1.search.ph'           : 'جستجوی تریدر یا شناسه حساب…',
+
+    /* ── phase 2 stats ── */
+    'p2.stat.pending.label'  : 'در انتظار بررسی',
+    'p2.stat.pending.note'   : 'ایمیل ظرف ۴۸ ساعت',
+    'p2.stat.passed.label'   : 'ارتقا به فاند',
+    'p2.stat.passed.note'    : 'این ماه',
+    'p2.stat.failed.label'   : 'رد',
+    'p2.stat.failed.note'    : 'این ماه',
+    'p2.stat.rate.label'     : 'نرخ قبولی',
+    'p2.stat.rate.note'      : 'معیارهای سخت‌تر',
+    'p2.page.title'          : 'حساب‌های فاز ۲',
+    'p2.page.subtitle'       : 'حساب‌های تأیید فاز ۲ — نتایج ظرف ۴۸ ساعت ایمیل می‌شود',
+    'p2.search.ph'           : 'جستجوی تریدر یا شناسه حساب…',
+    'p2.info.before'         : 'فاز ۲ حداقل نیاز دارد به',
+    'p2.info.target'         : 'هدف سود ۵٪',
+    'p2.info.after'          : 'در ۶۰ روز با حداکثر دراودان ۵٪ و حد زیان روزانه ۲٪.',
+    'p2.table.profit-target' : 'هدف سود',
+
+    /* ── funded accounts stats ── */
+    'funded.stat.traders.label'  : 'تریدرهای فعال',
+    'funded.stat.traders.note'   : '↑ ۸ نفر جدید امروز',
+    'funded.stat.capital.label'  : 'کل سرمایه',
+    'funded.stat.capital.note'   : 'تحت مدیریت',
+    'funded.stat.payouts.label'  : 'پرداختی‌های این ماه',
+    'funded.stat.payouts.note'   : 'در بین تمام تریدرها',
+    'funded.stat.risk.label'     : 'حساب‌های در خطر',
+    'funded.stat.risk.note'      : 'بیش از ۷۰٪ دراودان',
+    'funded.page.title'          : 'حساب‌های فاند شده',
+    'funded.page.subtitle'       : 'حساب‌های فاند — عملکرد و ریسک را به صورت زنده پایش کنید',
+    'funded.search.ph'           : 'جستجوی تریدر یا شناسه حساب…',
+    'funded.table.split'         : 'تقسیم سود',
+    'funded.table.monthly-pnl'   : 'سود/زیان ماهانه',
+    'funded.table.dd-used'       : 'دراودان استفاده‌شده',
+    'funded.table.payouts'       : 'کل پرداختی‌ها',
+
+    /* ── notifications stats ── */
+    'notif.stat.sent.label'      : 'ارسال امروز',
+    'notif.stat.sent.note'       : 'در تمام قالب‌ها',
+    'notif.stat.queued.label'    : 'در صف',
+    'notif.stat.queued.note'     : 'در انتظار ارسال',
+    'notif.stat.openrate.label'  : 'نرخ باز شدن',
+    'notif.stat.openrate.note'   : '۳۰ روز گذشته',
+    'notif.stat.failed.label'    : 'ناموفق',
+    'notif.stat.failed.note'     : 'خطاهای تحویل',
+    'notif.page.title'           : 'اعلان‌های ایمیلی',
+    'notif.page.subtitle'        : 'مدیریت و پیگیری اعلان‌های ایمیلی خروجی به تریدرها',
+    'notif.tab.log'              : 'گزارش اعلان‌ها',
+    'notif.tab.templates'        : 'قالب‌ها',
+    'notif.tab.queue'            : 'صف (۸)',
+    'notif.search.ph'            : 'جستجو با نام تریدر یا موضوع…',
+    'notif.filter.sent'          : 'ارسال شده',
+    'notif.filter.queued'        : 'در صف',
+    'notif.filter.failed'        : 'ناموفق',
+    'notif.log.to'               : 'به:',
+    'notif.status.sent'          : 'ارسال شده',
+    'notif.status.queued'        : 'در صف',
+    'notif.status.failed'        : 'ناموفق',
+    'notif.time.yesterday'       : 'دیروز',
+    'notif.time.scheduled'       : 'زمان‌بندی شده',
+    'notif.tpl.btn-new'          : 'قالب جدید',
+    'notif.tpl.1.name'           : 'فاز ۱ — قبول',
+    'notif.tpl.1.desc'           : 'ایمیل تبریک برای تریدرانی که فاز ۱ را با موفقیت گذراندند. شامل دستورالعمل ورود به فاز ۲.',
+    'notif.tpl.1.usage'          : '۱۳۴ بار در این ماه استفاده شده',
+    'notif.tpl.2.name'           : 'فاز ۱ — رد',
+    'notif.tpl.2.desc'           : 'اعلان ارسالی به تریدرانی که معیارهای فاز ۱ را برآورده نکردند. شامل بازخورد و گزینه‌های تلاش مجدد.',
+    'notif.tpl.2.usage'          : '۸۲ بار در این ماه استفاده شده',
+    'notif.tpl.3.name'           : 'فاز ۲ — قبول / فاند',
+    'notif.tpl.3.desc'           : 'ایمیل خوش‌آمدگویی به وضعیت تریدر فاند شده. شامل اطلاعات حساب، دسترسی به پلتفرم و برنامه پرداخت.',
+    'notif.tpl.3.usage'          : '۶۴ بار در این ماه استفاده شده',
+    'notif.tpl.4.name'           : 'هشدار ریسک — دراودان',
+    'notif.tpl.4.desc'           : 'هشدار خودکار ارسالی وقتی تریدری بیش از ۷۰٪ حداکثر دراودان مجاز خود را استفاده می‌کند.',
+    'notif.tpl.4.usage'          : '۲۸ بار در این ماه استفاده شده',
+    'notif.tpl.5.name'           : 'تأیید پرداخت',
+    'notif.tpl.5.desc'           : 'وقتی درخواست پرداخت تریدری پردازش می‌شود ارسال می‌شود. شامل مبلغ، روش پرداخت و زمان تخمینی رسیدن.',
+    'notif.tpl.5.usage'          : '۴۱ بار در این ماه استفاده شده',
+    'notif.tpl.status.active'    : 'فعال',
+    'notif.queue.banner.count'   : '۸ ایمیل',
+    'notif.queue.banner.text'    : 'در صف ارسال است — نتایج فاز ۱ و ۲ به طور خودکار در بازه SLA ارسال می‌شوند.',
+    'notif.queue.btn-send-all'   : 'ارسال همه',
+    'notif.queue.col.recipient'  : 'گیرنده',
+    'notif.queue.col.template'   : 'قالب',
+    'notif.queue.col.id'         : 'شناسه حساب',
+    'notif.queue.col.scheduled'  : 'زمان‌بندی شده',
+    'notif.queue.col.sla'        : 'مهلت SLA',
+    'notif.queue.col.actions'    : 'اقدامات',
+
+    /* ── settings ── */
+    'settings.page.title'        : 'تنظیمات',
+    'settings.page.subtitle'     : 'پروفایل، تنظیمات اعلان و پارامترهای ریسک خود را مدیریت کنید',
+    'settings.nav.profile'       : 'پروفایل',
+    'settings.nav.notifications' : 'اعلان‌ها',
+    'settings.nav.risk'          : 'پارامترهای ریسک',
+    'settings.nav.appearance'    : 'ظاهر',
+    'settings.nav.security'      : 'امنیت',
+
+    'settings.profile.title'     : 'اطلاعات پروفایل',
+    'settings.profile.photo'     : 'عکس پروفایل',
+    'settings.profile.photo.sub' : 'آواتار از حروف اول نام شما تولید می‌شود',
+    'settings.profile.photo.btn' : 'تغییر عکس',
+    'settings.profile.name.label': 'نام کامل',
+    'settings.profile.name.desc' : 'نام نمایش شما در تمام پلتفرم',
+    'settings.profile.email.label': 'آدرس ایمیل',
+    'settings.profile.email.desc': 'برای ورود و هشدارهای سیستم',
+    'settings.profile.title.label': 'عنوان شغلی',
+    'settings.profile.title.desc': 'در پروفایل و گزارش‌های شما نمایش داده می‌شود',
+    'settings.profile.tz.label'  : 'منطقه زمانی',
+    'settings.profile.tz.desc'   : 'برای زمان‌بندی و برچسب زمانی',
+    'settings.profile.tz.opt1'   : 'UTC+3:30 — تهران',
+    'settings.profile.tz.opt2'   : 'UTC+0 — لندن',
+    'settings.profile.tz.opt3'   : 'UTC-5 — نیویورک',
+    'settings.profile.tz.opt4'   : 'UTC+8 — سنگاپور',
+
+    'settings.notif.title'       : 'تنظیمات اعلان‌های ایمیلی',
+    'settings.notif.p1.label'    : 'نتایج فاز ۱',
+    'settings.notif.p1.desc'     : 'وقتی بررسی‌های فاز ۱ تمام شد به من اطلاع بده',
+    'settings.notif.p2.label'    : 'نتایج فاز ۲',
+    'settings.notif.p2.desc'     : 'وقتی ارزیابی‌های فاز ۲ انجام شد به من اطلاع بده',
+    'settings.notif.risk.label'  : 'هشدارهای ریسک',
+    'settings.notif.risk.desc'   : 'هشدار برای دراودان و نقض قوانین دریافت کن',
+    'settings.notif.payout.label': 'درخواست‌های پرداخت',
+    'settings.notif.payout.desc' : 'وقتی تریدرها درخواست پرداخت می‌دهند به من اطلاع بده',
+    'settings.notif.daily.label' : 'گزارش خلاصه روزانه',
+    'settings.notif.daily.desc'  : 'خلاصه روزانه ساعت ۸ صبح دریافت کن',
+    'settings.notif.time.label'  : 'زمان تحویل',
+    'settings.notif.time.desc'   : 'زمان پیش‌فرض ارسال دسته‌ای ایمیل',
+    'settings.notif.save'        : 'ذخیره تنظیمات',
+
+    'settings.risk.p1.title'     : 'قوانین چالش فاز ۱',
+    'settings.risk.p2.title'     : 'قوانین تأیید فاز ۲',
+    'settings.risk.profit.label' : 'هدف سود',
+    'settings.risk.p1profit.desc': 'سود مورد نیاز برای قبولی در فاز ۱',
+    'settings.risk.p2profit.desc': 'سود مورد نیاز برای قبولی در فاز ۲',
+    'settings.risk.dd.label'     : 'حداکثر دراودان',
+    'settings.risk.p1dd.desc'    : 'حداکثر دراودان کل مجاز',
+    'settings.risk.p2dd.desc'    : 'قانون دراودان سخت‌تر فاز ۲',
+    'settings.risk.loss.label'   : 'حد زیان روزانه',
+    'settings.risk.p1loss.desc'  : 'حداکثر زیان مجاز در یک روز معاملاتی',
+    'settings.risk.p2loss.desc'  : 'سقف دراودان روزانه برای فاز ۲',
+    'settings.risk.days.label'   : 'حداقل روزهای معاملاتی',
+    'settings.risk.days.desc'    : 'حداقل روزهای معاملاتی لازم قبل از ارزیابی',
+    'settings.risk.days.unit'    : 'روز',
+    'settings.risk.reset'        : 'بازنشانی به پیش‌فرض',
+    'settings.risk.save'         : 'ذخیره پارامترها',
+
+    'settings.appear.title'      : 'ظاهر',
+    'settings.appear.mode.label' : 'حالت رنگ',
+    'settings.appear.mode.desc'  : 'تم رابط کاربری مورد نظر خود را انتخاب کنید',
+    'settings.appear.dark'       : 'حالت تاریک',
+    'settings.appear.light'      : 'حالت روشن',
+    'settings.appear.compact.label': 'جداول فشرده',
+    'settings.appear.compact.desc': 'ارتفاع ردیف‌ها را در جداول کاهش دهید',
+    'settings.appear.sidebar.label': 'نوار کناری پیش‌فرض جمع‌شده',
+    'settings.appear.sidebar.desc': 'شروع با نوار کناری کوچک‌شده',
+    'settings.appear.anim.label' : 'انیمیشن‌ها',
+    'settings.appear.anim.desc'  : 'انیمیشن‌های انتقال رابط کاربری را فعال کن',
+    'settings.appear.defview.label': 'نمای پیش‌فرض داشبورد',
+    'settings.appear.defview.desc': 'صفحه نمایش پس از ورود',
+    'settings.appear.defview.dash': 'نمای کلی داشبورد',
+    'settings.appear.defview.p1' : 'حساب‌های فاز ۱',
+    'settings.appear.defview.p2' : 'حساب‌های فاز ۲',
+    'settings.appear.defview.funded': 'حساب‌های فاند شده',
+    'settings.appear.save'       : 'ذخیره',
+
+    'settings.sec.pwd.title'     : 'رمز عبور',
+    'settings.sec.2fa.title'     : 'احراز هویت دو مرحله‌ای',
+    'settings.sec.cur-pwd.label' : 'رمز عبور فعلی',
+    'settings.sec.new-pwd.label' : 'رمز عبور جدید',
+    'settings.sec.conf-pwd.label': 'تأیید رمز عبور جدید',
+    'settings.sec.new-pwd.ph'    : 'حداقل ۱۲ کاراکتر',
+    'settings.sec.conf-pwd.ph'   : 'رمز عبور جدید را تکرار کنید',
+    'settings.sec.totp.label'    : 'اپلیکیشن احراز هویت (TOTP)',
+    'settings.sec.totp.desc'     : 'کد تأیید در هر ورود لازم است',
+    'settings.sec.login-notif.label': 'اعلان‌های ورود',
+    'settings.sec.login-notif.desc': 'وقتی ورود جدیدی شناسایی شد ایمیل بزن',
+    'settings.sec.signout'       : 'خروج',
+    'settings.sec.update-pwd'    : 'به‌روزرسانی رمز عبور',
+
+    /* ── toast messages ── */
+    'toast.profile-saved'        : 'پروفایل با موفقیت ذخیره شد',
+    'toast.notif-saved'          : 'تنظیمات اعلان ذخیره شد',
+    'toast.risk-saved'           : 'پارامترهای ریسک به‌روز شد',
+    'toast.appearance-saved'     : 'تنظیمات ظاهری ذخیره شد',
+    'toast.security-saved'       : 'تنظیمات امنیتی به‌روز شد',
 
     /* ── auth — login ── */
     'login.title'            : 'خوش آمدید',
@@ -183,44 +745,42 @@ const TRANSLATIONS = {
   }
 };
 
-function applyLanguage(lang) {
-  const t = TRANSLATIONS[lang];
+/* ── Global helpers ────────────────────────────────────────── */
+window._lang = localStorage.getItem('opofinance_lang') || 'en';
+window.t = key => (TRANSLATIONS[window._lang]?.[key] ?? TRANSLATIONS.en[key] ?? key);
 
-  /* update text nodes */
+function applyLanguage(lang) {
+  window._lang = lang;
+  const dict = TRANSLATIONS[lang] || TRANSLATIONS.en;
+
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
-    if (t[key] !== undefined) el.textContent = t[key];
+    if (dict[key] !== undefined) el.textContent = dict[key];
   });
 
-  /* update input placeholders */
   document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
     const key = el.getAttribute('data-i18n-placeholder');
-    if (t[key] !== undefined) el.placeholder = t[key];
+    if (dict[key] !== undefined) el.placeholder = dict[key];
   });
 
-  /* swap --font token so every component switches cleanly */
   document.body.classList.toggle('lang-fa', lang === 'fa');
-
-  /* html lang attribute */
   document.documentElement.lang = lang === 'fa' ? 'fa' : 'en';
 
-  /* sync all switcher button active states (auth + dashboard) */
   document.querySelectorAll('.lang-btn').forEach(btn => {
     const isActive = btn.getAttribute('data-lang') === lang;
     btn.classList.toggle('active', isActive);
     btn.setAttribute('aria-pressed', isActive);
   });
 
+  /* re-render any JS-generated content (tables, logs) */
+  window.rerender?.();
+
   localStorage.setItem('opofinance_lang', lang);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  /* wire all lang buttons on the page */
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.addEventListener('click', () => applyLanguage(btn.getAttribute('data-lang')));
-  });
-
-  /* restore persisted language */
-  const saved = localStorage.getItem('opofinance_lang') || 'en';
-  applyLanguage(saved);
+  // lang-btn listeners are already wired by initLayout.
+  // This second applyLanguage pass runs after all page scripts have executed,
+  // so window.rerender is now set — this re-renders JS tables in the right language.
+  applyLanguage(window._lang);
 });

@@ -1,4 +1,4 @@
-initLayout({ title: 'Phase 1 Accounts', subtitle: 'Challenge evaluation — 24hr email SLA' });
+initLayout({ titleKey: 'page.phase1.title', subtitleKey: 'page.phase1.subtitle' });
 
 const ACCOUNTS = [
   { id: '#FX-29041', name: 'Marcus Chen',     size: '$100,000', start: '2026-03-15', days: 21, pnl: +8.32,  dd: 3.1,  ddd: 1.2, status: 'passed'  },
@@ -24,10 +24,11 @@ const ACCOUNTS = [
 let currentFilter = 'all';
 
 function statusBadge(s) {
-  const map   = { pending: 'badge-pending', passed: 'badge-passed', failed: 'badge-failed' };
-  const label = { pending: 'Pending',       passed: 'Passed',       failed: 'Failed'       };
-  return `<span class="badge ${map[s]}">${label[s]}</span>`;
+  const map = { pending: 'badge-pending', passed: 'badge-passed', failed: 'badge-failed' };
+  return `<span class="badge ${map[s]}">${window.t('status.' + s)}</span>`;
 }
+
+window.rerender = () => filterTable();
 
 function pnlCell(v) {
   const cls  = v >= 0 ? 'text-success' : 'text-error';

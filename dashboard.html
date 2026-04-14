@@ -17,8 +17,8 @@
 
     <main class="page-content">
       <div class="page-header">
-        <h1>Good morning, Elahe 👋</h1>
-        <p>Here's what's happening across your accounts today — Wednesday, 9 April 2026</p>
+        <h1 data-i18n="dash.greeting">Good morning, Elahe 👋</h1>
+        <p data-i18n="dash.greeting.sub">Here's what's happening across your accounts today — Wednesday, 9 April 2026</p>
       </div>
 
       <!-- Stats Grid -->
@@ -72,8 +72,8 @@
                 <span class="material-icons-round" style="color:var(--success)">check_circle</span>
               </div>
               <div class="activity-body">
-                <div class="activity-text"><strong>Marcus Chen</strong> passed Phase 2 evaluation — promoted to Funded</div>
-                <div class="activity-time">2 minutes ago</div>
+                <div class="activity-text"><strong>Marcus Chen</strong><span data-i18n="dash.act.1.suffix"> passed Phase 2 evaluation — promoted to Funded</span></div>
+                <div class="activity-time" data-i18n="dash.act.1.time">2 minutes ago</div>
               </div>
             </div>
 
@@ -82,8 +82,8 @@
                 <span class="material-icons-round" style="color:var(--primary)">add_circle</span>
               </div>
               <div class="activity-body">
-                <div class="activity-text"><strong>Sofia Martínez</strong> started Phase 1 — $100K account</div>
-                <div class="activity-time">18 minutes ago</div>
+                <div class="activity-text"><strong>Sofia Martínez</strong><span data-i18n="dash.act.2.suffix"> started Phase 1 — $100K account</span></div>
+                <div class="activity-time" data-i18n="dash.act.2.time">18 minutes ago</div>
               </div>
             </div>
 
@@ -92,8 +92,8 @@
                 <span class="material-icons-round" style="color:var(--error)">cancel</span>
               </div>
               <div class="activity-body">
-                <div class="activity-text"><strong>James Okonkwo</strong> breached max drawdown — Phase 1 failed</div>
-                <div class="activity-time">41 minutes ago</div>
+                <div class="activity-text"><strong>James Okonkwo</strong><span data-i18n="dash.act.3.suffix"> breached max drawdown — Phase 1 failed</span></div>
+                <div class="activity-time" data-i18n="dash.act.3.time">41 minutes ago</div>
               </div>
             </div>
 
@@ -102,8 +102,8 @@
                 <span class="material-icons-round" style="color:var(--info)">email</span>
               </div>
               <div class="activity-body">
-                <div class="activity-text">Batch notification sent to <strong>12 traders</strong> — Phase 1 results</div>
-                <div class="activity-time">1 hour ago</div>
+                <div class="activity-text"><span data-i18n="dash.act.4.prefix">Batch notification sent to</span> <strong>12 traders</strong><span data-i18n="dash.act.4.suffix"> — Phase 1 results</span></div>
+                <div class="activity-time" data-i18n="dash.act.4.time">1 hour ago</div>
               </div>
             </div>
 
@@ -112,8 +112,8 @@
                 <span class="material-icons-round" style="color:var(--warning)">warning</span>
               </div>
               <div class="activity-body">
-                <div class="activity-text"><strong>Aiko Tanaka</strong> approaching daily loss limit — 78% used</div>
-                <div class="activity-time">2 hours ago</div>
+                <div class="activity-text"><strong>Aiko Tanaka</strong><span data-i18n="dash.act.5.suffix"> approaching daily loss limit — 78% used</span></div>
+                <div class="activity-time" data-i18n="dash.act.5.time">2 hours ago</div>
               </div>
             </div>
 
@@ -122,8 +122,8 @@
                 <span class="material-icons-round" style="color:var(--success)">attach_money</span>
               </div>
               <div class="activity-body">
-                <div class="activity-text"><strong>Luca Ferrari</strong> requested $4,200 payout — under review</div>
-                <div class="activity-time">3 hours ago</div>
+                <div class="activity-text"><strong>Luca Ferrari</strong><span data-i18n="dash.act.6.suffix"> requested $4,200 payout — under review</span></div>
+                <div class="activity-time" data-i18n="dash.act.6.time">3 hours ago</div>
               </div>
             </div>
           </div>
@@ -208,24 +208,24 @@
             <div style="display:flex;flex-direction:column;gap:10px">
               <div class="flex-between">
                 <div class="flex-center gap-8">
-                  <span class="badge badge-pending">Queued</span>
+                  <span class="badge badge-pending" data-i18n="status.queued">Queued</span>
                   <span class="text-sm" data-i18n="dash.queue.p1">Phase 1 Results</span>
                 </div>
-                <span class="text-xs text-muted">5 emails</span>
+                <span class="text-xs text-muted" data-i18n="dash.queue.count.p1">5 emails</span>
               </div>
               <div class="flex-between">
                 <div class="flex-center gap-8">
-                  <span class="badge badge-pending">Queued</span>
+                  <span class="badge badge-pending" data-i18n="status.queued">Queued</span>
                   <span class="text-sm" data-i18n="dash.queue.p2">Phase 2 Results</span>
                 </div>
-                <span class="text-xs text-muted">3 emails</span>
+                <span class="text-xs text-muted" data-i18n="dash.queue.count.p2">3 emails</span>
               </div>
               <div class="flex-between">
                 <div class="flex-center gap-8">
-                  <span class="badge badge-sent">Sent</span>
+                  <span class="badge badge-sent" data-i18n="status.sent">Sent</span>
                   <span class="text-sm" data-i18n="dash.queue.funded">Funded Welcome</span>
                 </div>
-                <span class="text-xs text-muted">8 emails</span>
+                <span class="text-xs text-muted" data-i18n="dash.queue.count.funded">8 emails</span>
               </div>
             </div>
           </div>
@@ -257,47 +257,47 @@
               <tr>
                 <td class="text-xs text-muted">#FX-29041</td>
                 <td><div class="font-semibold">Marcus Chen</div></td>
-                <td><span class="badge badge-active">Phase 2</span></td>
+                <td><span class="badge badge-active" data-i18n="phase.2">Phase 2</span></td>
                 <td>$100,000</td>
                 <td class="text-success font-semibold">+8.32%</td>
                 <td>3.1%</td>
-                <td><span class="badge badge-passed">Passed</span></td>
+                <td><span class="badge badge-passed" data-i18n="status.passed">Passed</span></td>
               </tr>
               <tr>
                 <td class="text-xs text-muted">#FX-29038</td>
                 <td><div class="font-semibold">Sofia Martínez</div></td>
-                <td><span class="badge badge-review">Phase 1</span></td>
+                <td><span class="badge badge-review" data-i18n="phase.1">Phase 1</span></td>
                 <td>$100,000</td>
                 <td class="text-success font-semibold">+1.20%</td>
                 <td>0.8%</td>
-                <td><span class="badge badge-pending">In Progress</span></td>
+                <td><span class="badge badge-pending" data-i18n="status.in-progress">In Progress</span></td>
               </tr>
               <tr>
                 <td class="text-xs text-muted">#FX-29035</td>
                 <td><div class="font-semibold">James Okonkwo</div></td>
-                <td><span class="badge badge-review">Phase 1</span></td>
+                <td><span class="badge badge-review" data-i18n="phase.1">Phase 1</span></td>
                 <td>$50,000</td>
                 <td class="text-error font-semibold">−6.80%</td>
                 <td>10.0%</td>
-                <td><span class="badge badge-failed">Failed</span></td>
+                <td><span class="badge badge-failed" data-i18n="status.failed">Failed</span></td>
               </tr>
               <tr>
                 <td class="text-xs text-muted">#FX-29032</td>
                 <td><div class="font-semibold">Aiko Tanaka</div></td>
-                <td><span class="badge badge-review">Phase 1</span></td>
+                <td><span class="badge badge-review" data-i18n="phase.1">Phase 1</span></td>
                 <td>$200,000</td>
                 <td class="text-success font-semibold">+4.75%</td>
                 <td>4.7%</td>
-                <td><span class="badge badge-pending">In Progress</span></td>
+                <td><span class="badge badge-pending" data-i18n="status.in-progress">In Progress</span></td>
               </tr>
               <tr>
                 <td class="text-xs text-muted">#FX-29028</td>
                 <td><div class="font-semibold">Luca Ferrari</div></td>
-                <td><span class="badge badge-active">Funded</span></td>
+                <td><span class="badge badge-active" data-i18n="phase.funded">Funded</span></td>
                 <td>$50,000</td>
                 <td class="text-success font-semibold">+11.40%</td>
                 <td>2.4%</td>
-                <td><span class="badge badge-active">Active</span></td>
+                <td><span class="badge badge-active" data-i18n="status.active">Active</span></td>
               </tr>
             </tbody>
           </table>
@@ -308,8 +308,8 @@
   </div>
 </div>
 
-<script src="assets/js/layout.js"></script>
-<script src="assets/js/dashboard.js"></script>
-<script src="assets/js/i18n.js"></script>
+<script src="assets/js/i18n.js?v=2"></script>
+<script src="assets/js/layout.js?v=2"></script>
+<script src="assets/js/dashboard.js?v=2"></script>
 </body>
 </html>

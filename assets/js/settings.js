@@ -1,4 +1,4 @@
-initLayout({ title: 'Settings', subtitle: 'Account & preferences' });
+initLayout({ titleKey: 'page.settings.title', subtitleKey: 'page.settings.subtitle' });
 
 function showSection(id) {
   ['profile', 'notifications', 'risk', 'appearance', 'security'].forEach(s => {
@@ -7,9 +7,9 @@ function showSection(id) {
   });
 }
 
-function showToast(msg) {
+function showToast(msgKey) {
   const toast = document.getElementById('toast');
-  document.getElementById('toastMsg').textContent = msg;
+  document.getElementById('toastMsg').textContent = window.t(msgKey);
   toast.style.transform = 'translateY(0)';
   toast.style.opacity   = '1';
   setTimeout(() => {

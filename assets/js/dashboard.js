@@ -1,1 +1,1 @@
-initLayout({ title: 'Dashboard', subtitle: 'Overview' });
+initLayout({ titleKey: 'page.dashboard.title', subtitleKey: 'page.dashboard.subtitle' });

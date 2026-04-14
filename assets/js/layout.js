@@ -37,7 +37,9 @@ const NAV_ITEMS = [
 ];
 
 function initLayout(config = {}) {
-  const { title = 'Dashboard', subtitle = '' } = config;
+  const { titleKey = 'page.dashboard.title', subtitleKey = '' } = config;
+  const title    = titleKey    ? window.t(titleKey)    : '';
+  const subtitle = subtitleKey ? window.t(subtitleKey) : '';
   const currentPage = window.location.pathname.split('/').pop() || 'dashboard.html';
 
   // ── Build sidebar ──────────────────────────────────────────
@@ -92,8 +94,8 @@ function initLayout(config = {}) {
       </button>
 
       <div>
-        <div class="topbar-title">${title}</div>
-        ${subtitle ? `<div class="topbar-subtitle">${subtitle}</div>` : ''}
+        <div class="topbar-title" data-i18n="${titleKey}">${title}</div>
+        ${subtitleKey ? `<div class="topbar-subtitle" data-i18n="${subtitleKey}">${subtitle}</div>` : ''}
       </div>
 
       <div class="topbar-spacer"></div>
@@ -144,7 +146,18 @@ function initLayout(config = {}) {
     applyTheme(getTheme());
     const themeBtn = document.getElementById('themeToggle');
     if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
+
+    // Wire language switcher buttons immediately (don't wait for DOMContentLoaded)
+    topbar.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (typeof applyLanguage === 'function') applyLanguage(btn.getAttribute('data-lang'));
+      });
+    });
   }
+
+  // Apply current language to all DOM elements now visible (static HTML + sidebar + topbar)
+  // window.rerender is not set yet at this point; DOMContentLoaded handles the table pass
+  if (typeof applyLanguage === 'function') applyLanguage(window._lang);
 
   // ── Auth guard ─────────────────────────────────────────────
   const user = sessionStorage.getItem('forexrm_user');

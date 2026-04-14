@@ -1,4 +1,4 @@
-initLayout({ title: 'Email Notifications', subtitle: 'Trader communication management' });
+initLayout({ titleKey: 'page.notif.title', subtitleKey: 'page.notif.subtitle' });
 
 const LOG = [
   { name: 'Marcus Chen',        email: 'marcus.c@email.com',  subject: 'Phase 2 Passed — Funded Account Activated',  type: 'success', time: '09:14',    status: 'sent'   },
@@ -15,14 +15,17 @@ const LOG = [
 
 const iconMap  = { success: 'check_circle', error: 'cancel', info: 'email', warning: 'warning', primary: 'payments' };
 const colorMap = { success: 'var(--success)', error: 'var(--error)', info: 'var(--info)', warning: 'var(--warning)', primary: 'var(--primary)' };
-const bgMap    = { success: 'rgba(134,239,172,.12)', error: 'rgba(255,180,171,.12)', info: 'rgba(147,197,253,.12)', warning: 'rgba(252,211,77,.12)', primary: 'rgba(196,170,255,.12)' };
+const bgMap    = { success: 'rgba(134,239,172,.12)', error: 'rgba(255,180,171,.12)', info: 'rgba(147,197,253,.12)', warning: 'rgba(252,211,77,.12)', primary: 'rgba(34,197,94,.12)' };
 
 let logFilter = 'all';
 
 function renderLog(data) {
   document.getElementById('notifLog').innerHTML = data.map(n => {
-    const statusLabel = n.status === 'sent' ? 'Sent' : n.status === 'queued' ? 'Queued' : 'Failed';
+    const statusLabel = window.t('notif.status.' + n.status);
     const badgeClass  = n.status === 'sent' ? 'badge-sent' : n.status === 'queued' ? 'badge-queued' : 'badge-failed-mail';
+    const timeLabel   = n.time === 'Yesterday' ? window.t('notif.time.yesterday')
+                      : n.time === 'Scheduled' ? window.t('notif.time.scheduled')
+                      : n.time;
     return `
       <div class="notif-item">
         <div class="notif-item-icon" style="background:${bgMap[n.type]}">
@@ -30,10 +33,10 @@ function renderLog(data) {
         </div>
         <div class="notif-item-body">
           <div class="notif-item-title">${n.subject}</div>
-          <div class="notif-item-desc">To: <strong>${n.name}</strong> &lt;${n.email}&gt;</div>
+          <div class="notif-item-desc">${window.t('notif.log.to')} <strong>${n.name}</strong> &lt;${n.email}&gt;</div>
           <div class="notif-item-meta">
             <span class="badge ${badgeClass}">${statusLabel}</span>
-            <span class="notif-item-time">${n.time}</span>
+            <span class="notif-item-time">${timeLabel}</span>
           </div>
         </div>
         <button class="btn btn-text btn-sm">
@@ -42,6 +45,8 @@ function renderLog(data) {
       </div>`;
   }).join('');
 }
+
+window.rerender = () => filterLog();
 
 function setLogFilter(el, filter) {
   logFilter = filter;

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ForexRM — Funded Accounts</title>
+  <title>OpoFinance — Funded Accounts</title>
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
@@ -17,8 +17,8 @@
 
     <main class="page-content">
       <div class="page-header">
-        <h1>Funded Accounts</h1>
-        <p>Live funded trader accounts — monitor performance and risk in real time</p>
+        <h1 data-i18n="funded.page.title">Funded Accounts</h1>
+        <p data-i18n="funded.page.subtitle">Live funded trader accounts — monitor performance and risk in real time</p>
       </div>
 
       <!-- Stats -->
@@ -26,30 +26,30 @@
         <div class="stat-card stat-green">
           <div class="stat-card-accent"></div>
           <div class="stat-icon"><span class="material-icons-round">people</span></div>
-          <div class="stat-label">Active Traders</div>
+          <div class="stat-label" data-i18n="funded.stat.traders.label">Active Traders</div>
           <div class="stat-value">78</div>
-          <div class="stat-note">↑ 8 new today</div>
+          <div class="stat-note" data-i18n="funded.stat.traders.note">↑ 8 new today</div>
         </div>
         <div class="stat-card stat-purple">
           <div class="stat-card-accent"></div>
           <div class="stat-icon"><span class="material-icons-round">account_balance</span></div>
-          <div class="stat-label">Total Capital</div>
+          <div class="stat-label" data-i18n="funded.stat.capital.label">Total Capital</div>
           <div class="stat-value" style="font-size:26px">$6.4M</div>
-          <div class="stat-note">Under management</div>
+          <div class="stat-note" data-i18n="funded.stat.capital.note">Under management</div>
         </div>
         <div class="stat-card stat-blue">
           <div class="stat-card-accent"></div>
           <div class="stat-icon"><span class="material-icons-round">payments</span></div>
-          <div class="stat-label">Payouts This Month</div>
+          <div class="stat-label" data-i18n="funded.stat.payouts.label">Payouts This Month</div>
           <div class="stat-value" style="font-size:26px">$142K</div>
-          <div class="stat-note">Across all traders</div>
+          <div class="stat-note" data-i18n="funded.stat.payouts.note">Across all traders</div>
         </div>
         <div class="stat-card stat-yellow">
           <div class="stat-card-accent"></div>
           <div class="stat-icon"><span class="material-icons-round">warning</span></div>
-          <div class="stat-label">At-Risk Accounts</div>
+          <div class="stat-label" data-i18n="funded.stat.risk.label">At-Risk Accounts</div>
           <div class="stat-value">4</div>
-          <div class="stat-note">&gt;70% drawdown used</div>
+          <div class="stat-note" data-i18n="funded.stat.risk.note">&gt;70% drawdown used</div>
         </div>
       </div>
 
@@ -57,17 +57,17 @@
       <div class="filter-bar">
         <div class="search-box">
           <span class="material-icons-round">search</span>
-          <input type="text" id="fundedSearch" placeholder="Search trader or account ID…" oninput="filterTable()">
+          <input type="text" id="fundedSearch" data-i18n-placeholder="funded.search.ph" placeholder="Search trader or account ID…" oninput="filterTable()">
         </div>
 
-        <button class="filter-chip active" data-filter="all" onclick="setFilter(this,'all')">All</button>
-        <button class="filter-chip" data-filter="active" onclick="setFilter(this,'active')">Active</button>
-        <button class="filter-chip" data-filter="at-risk" onclick="setFilter(this,'at-risk')">At Risk</button>
-        <button class="filter-chip" data-filter="suspended" onclick="setFilter(this,'suspended')">Suspended</button>
+        <button class="filter-chip active" data-filter="all" onclick="setFilter(this,'all')" data-i18n="filter.all">All</button>
+        <button class="filter-chip" data-filter="active" onclick="setFilter(this,'active')" data-i18n="filter.active">Active</button>
+        <button class="filter-chip" data-filter="at-risk" onclick="setFilter(this,'at-risk')" data-i18n="filter.at-risk">At Risk</button>
+        <button class="filter-chip" data-filter="suspended" onclick="setFilter(this,'suspended')" data-i18n="filter.suspended">Suspended</button>
 
         <button class="btn btn-outlined btn-sm" style="margin-left:auto">
           <span class="material-icons-round" style="font-size:16px">download</span>
-          Export CSV
+          <span data-i18n="btn.export-csv">Export CSV</span>
         </button>
       </div>
 
@@ -76,16 +76,16 @@
         <table>
           <thead>
             <tr>
-              <th>Account ID</th>
-              <th>Trader</th>
-              <th>Account Size</th>
-              <th>Profit Split</th>
-              <th>Start Date</th>
-              <th>Monthly P&L</th>
-              <th>Drawdown Used</th>
-              <th>Total Payouts</th>
-              <th>Status</th>
-              <th>Actions</th>
+              <th data-i18n="table.account-id">Account ID</th>
+              <th data-i18n="table.trader">Trader</th>
+              <th data-i18n="table.size">Account Size</th>
+              <th data-i18n="funded.table.split">Profit Split</th>
+              <th data-i18n="table.start">Start Date</th>
+              <th data-i18n="funded.table.monthly-pnl">Monthly P&amp;L</th>
+              <th data-i18n="funded.table.dd-used">Drawdown Used</th>
+              <th data-i18n="funded.table.payouts">Total Payouts</th>
+              <th data-i18n="table.status">Status</th>
+              <th data-i18n="table.actions">Actions</th>
             </tr>
           </thead>
           <tbody id="fundedBody"></tbody>
@@ -94,16 +94,16 @@
 
       <div id="fundedEmpty" class="empty-state" style="display:none">
         <span class="material-icons-round">search_off</span>
-        <h3>No accounts found</h3>
-        <p>Try adjusting your search or filter criteria.</p>
+        <h3 data-i18n="empty.title">No accounts found</h3>
+        <p data-i18n="empty.desc">Try adjusting your search or filter criteria.</p>
       </div>
 
     </main>
   </div>
 </div>
 
-<script src="assets/js/layout.js"></script>
-<script src="assets/js/funded.js"></script>
-<script src="assets/js/i18n.js"></script>
+<script src="assets/js/i18n.js?v=2"></script>
+<script src="assets/js/layout.js?v=2"></script>
+<script src="assets/js/funded.js?v=2"></script>
 </body>
 </html>

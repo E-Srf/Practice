@@ -1,4 +1,4 @@
-initLayout({ title: 'Funded Accounts', subtitle: 'Live trading accounts under management' });
+initLayout({ titleKey: 'page.funded.title', subtitleKey: 'page.funded.subtitle' });
 
 const ACCOUNTS = [
   { id: '#FF-1081', name: 'Luca Ferrari',       size: 50000,  split: 80, start: '2026-01-15', pnl: +11.40, dd: 2.4,  payouts: 4200,  status: 'active'    },
@@ -24,11 +24,12 @@ const ACCOUNTS = [
 let currentFilter = 'all';
 
 function statusBadge(s) {
-  const map   = { active: 'badge-active', 'at-risk': 'badge-pending', suspended: 'badge-failed'    };
-  const label = { active: 'Active',       'at-risk': 'At Risk',       suspended: 'Suspended'       };
-  const icons = { active: 'circle',       'at-risk': 'warning',       suspended: 'block'            };
-  return `<span class="badge ${map[s]}"><span class="material-icons-round">${icons[s]}</span>${label[s]}</span>`;
+  const map   = { active: 'badge-active', 'at-risk': 'badge-pending', suspended: 'badge-failed' };
+  const icons = { active: 'circle',       'at-risk': 'warning',       suspended: 'block'        };
+  return `<span class="badge ${map[s]}"><span class="material-icons-round">${icons[s]}</span>${window.t('status.' + s)}</span>`;
 }
+
+window.rerender = () => filterTable();
 
 function ddBar(pct) {
   const color = pct >= 80 ? 'var(--error)' : pct >= 60 ? 'var(--warning)' : 'var(--success)';
