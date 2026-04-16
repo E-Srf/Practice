@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpoFinance — Risk Alerts</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    /* ── Modal ─────────────────────────────────────────── */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.55);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .modal-backdrop.open { display: flex; }
+
+    .modal {
+      background: var(--surface-container-low);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--radius-xl);
+      width: 100%;
+      max-width: 540px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 28px;
+      box-shadow: var(--elevation-3);
+    }
+
+    .modal-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--on-surface);
+      margin: 0 0 20px;
+    }
+
+    .modal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .modal-grid .full { grid-column: 1 / -1; }
+
+    .modal-field label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--on-surface-variant);
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+
+    .modal-field input,
+    .modal-field select,
+    .modal-field textarea {
+      width: 100%;
+      background: var(--surface-container);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--radius-sm);
+      color: var(--on-surface);
+      font-size: 14px;
+      padding: 9px 12px;
+      box-sizing: border-box;
+      outline: none;
+      transition: border-color .15s;
+    }
+
+    .modal-field input:focus,
+    .modal-field select:focus,
+    .modal-field textarea:focus {
+      border-color: var(--primary);
+    }
+
+    .modal-field textarea { resize: vertical; min-height: 72px; }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    /* ── Toast ─────────────────────────────────────────── */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      padding: 12px 18px;
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--elevation-3);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity .2s, transform .2s;
+      pointer-events: none;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+    .toast.success { background: var(--success-container); color: var(--on-surface); }
+    .toast.error   { background: var(--error-container);   color: var(--on-surface); }
+
+    /* ── Table actions ──────────────────────────────────── */
+    .action-btn {
+      background: transparent;
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--radius-sm);
+      color: var(--on-surface-variant);
+      cursor: pointer;
+      padding: 4px 8px;
+      font-size: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: background .15s, color .15s;
+    }
+    .action-btn:hover { background: var(--surface-container); color: var(--on-surface); }
+    .action-btn.danger:hover { background: var(--error-container); color: var(--on-surface); border-color: var(--error); }
+
+    /* ── Severity / status badges ───────────────────────── */
+    .sev-low      { background: rgba(147,197,253,.15); color: var(--info); }
+    .sev-medium   { background: rgba(252,211,77,.15);  color: var(--warning); }
+    .sev-high     { background: rgba(255,180,171,.2);  color: var(--error); }
+    .sev-critical { background: rgba(255,100,100,.2);  color: #ff6464; font-weight:700; }
+
+    .st-open      { background: rgba(252,211,77,.15);  color: var(--warning); }
+    .st-reviewed  { background: rgba(147,197,253,.15); color: var(--info); }
+    .st-resolved  { background: rgba(134,239,172,.15); color: var(--success); }
+    .st-escalated { background: rgba(255,180,171,.2);  color: var(--error); }
+    .st-dismissed { background: rgba(150,150,150,.15); color: var(--on-surface-variant); }
+
+    /* ── Page toolbar ──────────────────────────────────── */
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .toolbar-left { display: flex; align-items: center; gap: 12px; }
+
+    .filter-select {
+      background: var(--surface-container);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--radius-sm);
+      color: var(--on-surface);
+      font-size: 13px;
+      padding: 7px 10px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    /* ── Empty / error states ───────────────────────────── */
+    .state-msg {
+      text-align: center;
+      padding: 48px 24px;
+      color: var(--on-surface-variant);
+      font-size: 14px;
+    }
+    .state-msg .material-icons-round { font-size: 40px; display: block; margin-bottom: 10px; opacity: .5; }
+  </style>
+</head>
+<body>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <div class="main-content">
+    <header class="topbar" id="topbar"></header>
+
+    <main class="page-content">
+
+      <div class="page-header">
+        <h1>Risk Alerts</h1>
+        <p>Monitor and manage risk violations across all trader accounts</p>
+      </div>
+
+      <!-- Toolbar -->
+      <div class="toolbar">
+        <div class="toolbar-left">
+          <select class="filter-select" id="filterStatus" title="Filter by status">
+            <option value="">All Statuses</option>
+            <option value="open">Open</option>
+            <option value="reviewed">Reviewed</option>
+            <option value="resolved">Resolved</option>
+            <option value="escalated">Escalated</option>
+            <option value="dismissed">Dismissed</option>
+          </select>
+          <select class="filter-select" id="filterSeverity" title="Filter by severity">
+            <option value="">All Severities</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+            <option value="critical">Critical</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" id="btnAddAlert">
+          <span class="material-icons-round" style="font-size:17px">add</span>
+          Add New Alert
+        </button>
+      </div>
+
+      <!-- API error banner -->
+      <div id="pageError" style="display:none;padding:12px 16px;border-radius:var(--radius-md);
+           background:var(--error-container);color:var(--on-surface);font-size:14px;margin-bottom:16px;
+           display:none;align-items:center;gap:8px">
+        <span class="material-icons-round" style="font-size:18px">error_outline</span>
+        <span id="pageErrorMsg"></span>
+      </div>
+
+      <!-- Table card -->
+      <div class="card" style="padding:0;overflow:hidden">
+        <div id="tableWrap">
+          <div class="state-msg">
+            <span class="material-icons-round">hourglass_top</span>
+            Loading alerts…
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- ── Add / Edit Modal ──────────────────────────────────────────────── -->
+<div class="modal-backdrop" id="alertModal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-title" id="modalTitle">Add Risk Alert</div>
+
+    <div id="modalError" style="display:none;padding:10px 14px;border-radius:var(--radius-sm);
+         background:var(--error-container);color:var(--on-surface);font-size:13px;margin-bottom:14px">
+    </div>
+
+    <form id="alertForm" novalidate>
+      <input type="hidden" id="alertId">
+
+      <div class="modal-grid">
+
+        <div class="modal-field full">
+          <label>Client Email <span style="color:var(--error)">*</span></label>
+          <input type="email" id="fClientEmail" placeholder="trader@example.com" required>
+        </div>
+
+        <div class="modal-field">
+          <label>Account Number</label>
+          <input type="text" id="fAccountNumber" placeholder="ACC-001">
+        </div>
+
+        <div class="modal-field">
+          <label>Symbol</label>
+          <input type="text" id="fSymbol" placeholder="EURUSD">
+        </div>
+
+        <div class="modal-field">
+          <label>Alert Type <span style="color:var(--error)">*</span></label>
+          <select id="fAlertType" required>
+            <option value="">— Select —</option>
+            <option value="daily_loss">Daily Loss</option>
+            <option value="total_drawdown">Total Drawdown</option>
+            <option value="trailing_drawdown">Trailing Drawdown</option>
+            <option value="margin_call">Margin Call</option>
+            <option value="lot_size">Lot Size</option>
+            <option value="overexposure">Overexposure</option>
+            <option value="news_trading">News Trading</option>
+            <option value="weekend_holding">Weekend Holding</option>
+            <option value="profit_target">Profit Target</option>
+            <option value="suspicious_activity">Suspicious Activity</option>
+          </select>
+        </div>
+
+        <div class="modal-field">
+          <label>Severity</label>
+          <select id="fSeverity">
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+            <option value="critical">Critical</option>
+          </select>
+        </div>
+
+        <div class="modal-field">
+          <label>Value at Breach</label>
+          <input type="number" id="fValueTriggered" placeholder="e.g. 520.00" step="any">
+        </div>
+
+        <div class="modal-field">
+          <label>Rule Limit</label>
+          <input type="number" id="fThreshold" placeholder="e.g. 500.00" step="any">
+        </div>
+
+        <div class="modal-field">
+          <label>Status</label>
+          <select id="fStatus">
+            <option value="open" selected>Open</option>
+            <option value="reviewed">Reviewed</option>
+            <option value="resolved">Resolved</option>
+            <option value="escalated">Escalated</option>
+            <option value="dismissed">Dismissed</option>
+          </select>
+        </div>
+
+        <div class="modal-field full">
+          <label>Description</label>
+          <textarea id="fDescription" placeholder="Brief description of the violation…"></textarea>
+        </div>
+
+        <div class="modal-field full">
+          <label>Notes</label>
+          <textarea id="fNotes" placeholder="Risk manager notes…"></textarea>
+        </div>
+
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-outlined" id="btnModalCancel">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="btnModalSave">
+          <span class="material-icons-round" style="font-size:16px">save</span>
+          Save Alert
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ── Toast ─────────────────────────────────────────────────────────── -->
+<div class="toast" id="toast">
+  <span class="material-icons-round" id="toastIcon" style="font-size:18px">check_circle</span>
+  <span id="toastMsg"></span>
+</div>
+
+<script src="assets/js/api.js"></script>
+<script src="assets/js/i18n.js?v=2"></script>
+<script src="assets/js/layout.js?v=2"></script>
+<script src="assets/js/risk-alerts.js"></script>
+</body>
+</html>

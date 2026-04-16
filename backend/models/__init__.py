@@ -7,3 +7,4 @@ from backend.models.violation import Violation
 from backend.models.payout import Payout
 from backend.models.notification import Notification
 from backend.models.risk_alert import RiskAlert
+from backend.models.equity_log import EquityLog

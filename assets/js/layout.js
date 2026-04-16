@@ -1,6 +1,6 @@
 // layout.js — shared sidebar + topbar for all dashboard pages
 
-// ── Theme ──────────────────────────────────────────────────
+// ── Theme ──────────────────────────────────────────────────────────────────
 
 function getTheme() {
   return localStorage.getItem('forexrm-theme') || 'dark';
@@ -13,36 +13,64 @@ function applyTheme(theme) {
 }
 
 function toggleTheme() {
-  const current  = getTheme();
-  const next     = current === 'dark' ? 'light' : 'dark';
-  const html     = document.documentElement;
-
-  // Briefly enable cross-property transitions for a smooth swap
-  html.classList.add('theme-switching');
+  const next = getTheme() === 'dark' ? 'light' : 'dark';
+  document.documentElement.classList.add('theme-switching');
   applyTheme(next);
   localStorage.setItem('forexrm-theme', next);
-  setTimeout(() => html.classList.remove('theme-switching'), 300);
+  setTimeout(() => document.documentElement.classList.remove('theme-switching'), 300);
 }
 
-// Apply before first paint to avoid flash
+// Apply before first paint
 applyTheme(getTheme());
+
+// ── Helpers ────────────────────────────────────────────────────────────────
+
+function getUser() {
+  try { return JSON.parse(sessionStorage.getItem('forexrm_user')) || {}; }
+  catch (_) { return {}; }
+}
+
+function initials(name) {
+  if (!name) return '?';
+  return name.trim().split(/\s+/).map(w => w[0].toUpperCase()).slice(0, 2).join('');
+}
+
+function formatRole(role) {
+  if (!role) return 'User';
+  return role.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+}
+
+function logout() {
+  sessionStorage.removeItem('forexrm_user');
+  window.location.href = 'index.html';
+}
+
+// ── Nav items ──────────────────────────────────────────────────────────────
 
 const NAV_ITEMS = [
   { href: 'dashboard.html',     icon: 'dashboard',              label: 'Dashboard',        i18n: 'nav.dashboard',      badge: null },
   { href: 'phase1.html',        icon: 'assignment',             label: 'Phase 1 Accounts', i18n: 'nav.phase1',         badge: '47' },
   { href: 'phase2.html',        icon: 'assignment_turned_in',   label: 'Phase 2 Accounts', i18n: 'nav.phase2',         badge: '23' },
   { href: 'funded.html',        icon: 'account_balance_wallet', label: 'Funded Accounts',  i18n: 'nav.funded',         badge: null },
+  { href: 'risk-alerts.html',   icon: 'warning_amber',          label: 'Risk Alerts',      i18n: 'nav.risk-alerts',    badge: null },
   { href: 'notifications.html', icon: 'notifications',          label: 'Notifications',    i18n: 'nav.notifications',  badge: '5'  },
   { href: 'settings.html',      icon: 'settings',               label: 'Settings',         i18n: 'nav.settings',       badge: null },
 ];
 
+// ── initLayout ─────────────────────────────────────────────────────────────
+
 function initLayout(config = {}) {
   const { titleKey = 'page.dashboard.title', subtitleKey = '' } = config;
-  const title    = titleKey    ? window.t(titleKey)    : '';
-  const subtitle = subtitleKey ? window.t(subtitleKey) : '';
+  const title       = titleKey    ? window.t(titleKey)    : '';
+  const subtitle    = subtitleKey ? window.t(subtitleKey) : '';
   const currentPage = window.location.pathname.split('/').pop() || 'dashboard.html';
+  const user        = getUser();
+  const userName    = user.name  || 'User';
+  const userRole    = user.role  || '';
+  const userInitials = initials(userName);
 
-  // ── Build sidebar ──────────────────────────────────────────
+  // ── Sidebar ──────────────────────────────────────────────────
+
   const navHTML = NAV_ITEMS.map(item => {
     const active = currentPage === item.href ? 'active' : '';
     const badge  = item.badge ? `<span class="nav-badge">${item.badge}</span>` : '';
@@ -76,16 +104,26 @@ function initLayout(config = {}) {
 
       <div class="sidebar-footer">
         <div class="user-chip">
-          <div class="avatar">EL</div>
-          <div>
-            <div class="user-info-name">Elahe Ahmadi</div>
-            <div class="user-info-role" data-i18n="sidebar.role">Risk Analyst</div>
+          <div class="avatar">${userInitials}</div>
+          <div style="flex:1;min-width:0">
+            <div class="user-info-name">${userName}</div>
+            <div class="user-info-role">${formatRole(userRole)}</div>
           </div>
         </div>
+        <button
+          onclick="logout()"
+          style="margin-top:10px;width:100%;background:transparent;border:1px solid var(--outline);
+                 color:var(--on-surface-variant);border-radius:var(--radius-sm);padding:6px 10px;
+                 font-size:12px;cursor:pointer;display:flex;align-items:center;gap:6px;justify-content:center"
+          title="Sign out">
+          <span class="material-icons-round" style="font-size:15px">logout</span>
+          Sign Out
+        </button>
       </div>`;
   }
 
-  // ── Build topbar ───────────────────────────────────────────
+  // ── Topbar ───────────────────────────────────────────────────
+
   const topbar = document.getElementById('topbar');
   if (topbar) {
     topbar.innerHTML = `
@@ -120,13 +158,13 @@ function initLayout(config = {}) {
           <span class="notif-dot"></span>
         </button>
 
-        <div class="topbar-avatar" title="Elahe Ahmadi">EL</div>
+        <div class="topbar-avatar" title="${userName}">${userInitials}</div>
       </div>`;
 
-    // Mobile menu toggle
-    const menuBtn  = document.getElementById('menuToggle');
+    // Mobile menu
+    const menuBtn   = document.getElementById('menuToggle');
     const sidebarEl = document.getElementById('sidebar');
-    const overlay  = document.getElementById('sidebarOverlay');
+    const overlay   = document.getElementById('sidebarOverlay');
 
     if (menuBtn && sidebarEl) {
       menuBtn.addEventListener('click', () => {
@@ -134,7 +172,6 @@ function initLayout(config = {}) {
         if (overlay) overlay.classList.toggle('open');
       });
     }
-
     if (overlay && sidebarEl) {
       overlay.addEventListener('click', () => {
         sidebarEl.classList.remove('open');
@@ -142,12 +179,10 @@ function initLayout(config = {}) {
       });
     }
 
-    // Theme toggle — icon must be set after topbar HTML is injected
     applyTheme(getTheme());
     const themeBtn = document.getElementById('themeToggle');
     if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
 
-    // Wire language switcher buttons immediately (don't wait for DOMContentLoaded)
     topbar.querySelectorAll('.lang-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         if (typeof applyLanguage === 'function') applyLanguage(btn.getAttribute('data-lang'));
@@ -155,14 +190,10 @@ function initLayout(config = {}) {
     });
   }
 
-  // Apply current language to all DOM elements now visible (static HTML + sidebar + topbar)
-  // window.rerender is not set yet at this point; DOMContentLoaded handles the table pass
   if (typeof applyLanguage === 'function') applyLanguage(window._lang);
 
-  // ── Auth guard ─────────────────────────────────────────────
-  const user = sessionStorage.getItem('forexrm_user');
-  if (!user) {
+  // ── Auth guard ───────────────────────────────────────────────
+  if (!sessionStorage.getItem('forexrm_user')) {
     window.location.href = 'index.html';
-    return;
   }
 }
